@@ -47,7 +47,7 @@ class MainDrawer extends StatelessWidget {
           buildListTile(Icons.favorite, "Test Route", () {
             //navigate when code eka gahapan
             //naviagte.pushName
-             Navigator.of(context).pushReplacementNamed(TransferScreen.routeName);
+      
           }),
           buildListTile(Icons.settings, "Methanata items dapan", () {}),
           buildListTile(Icons.payment, "Methanata items dapan", () {}),
