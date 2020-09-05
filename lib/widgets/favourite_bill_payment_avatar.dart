@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../screens/Test_screen.dart';
+import 'package:peoples_bank/screens/Payment_List_screen.dart';
+import '../screens/Payment_List_screen.dart';
 class FavouriteBillPaymentAvatar extends StatelessWidget {
   final int index;
   FavouriteBillPaymentAvatar(this.index);
@@ -11,7 +12,7 @@ class FavouriteBillPaymentAvatar extends StatelessWidget {
       children: <Widget>[
         GestureDetector(
           onTap:() {
-             Navigator.of(context).pushNamed(TestScreen.routeName);
+             Navigator.of(context).pushNamed(PaymentListScreen.routeName);
           },
           child: CircleAvatar(
             child: Icon(Icons.ac_unit),

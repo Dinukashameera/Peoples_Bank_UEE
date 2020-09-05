@@ -3,6 +3,7 @@ import './screens/Favourites_screen.dart';
 import './screens/Transfer_Screen.dart';
 import './screens/Settings_screen.dart';
 import 'screens/Tabs_screen.dart';
+import './screens/Payment_List_screen.dart';
 import './screens/Test_screen.dart';
 
 void main() {
@@ -40,7 +41,8 @@ class _MyHomePageState extends State<MyApp> {
         FavouriteScreen.routeName: (context) => FavouriteScreen(),
         TransferScreen.routeName: (context) => TransferScreen(),
         SettingsScreen.routeName: (context) => SettingsScreen(),
-        TestScreen.routeName: (context) => TestScreen()
+        TestScreen.routeName: (context) => TestScreen(),
+        PaymentListScreen.routeName: (context) => PaymentListScreen()
       },
     );
   }
