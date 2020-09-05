@@ -72,13 +72,14 @@ class _TabsScreenState extends State<TabsScreen> {
                 title: Text('Transfers'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border),
+                icon: Icon(Icons.favorite_border,),
                 title: Text('Home'),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
                 title: Text('Favourite'),
               ),
+             
             ],
             currentIndex: _selectedIndex,
             type: BottomNavigationBarType.shifting,
