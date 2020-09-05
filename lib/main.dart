@@ -3,6 +3,7 @@ import './screens/Favourites_screen.dart';
 import './screens/Transfer_Screen.dart';
 import './screens/Settings_screen.dart';
 import 'screens/Tabs_screen.dart';
+import './screens/Test_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,17 +28,19 @@ class _MyHomePageState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BOC REDDE APP',
+      debugShowCheckedModeBanner: false,
+      title: 'Peoples Redde App',
       theme: ThemeData(
         primaryColor: Colors.black,
-        accentColor: Colors.yellow,
+        accentColor: Colors.amber[800],
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => TabsScreen(),
         FavouriteScreen.routeName: (context) => FavouriteScreen(),
         TransferScreen.routeName: (context) => TransferScreen(),
-        SettingsScreen.routeName: (context) => SettingsScreen()
+        SettingsScreen.routeName: (context) => SettingsScreen(),
+        TestScreen.routeName: (context) => TestScreen()
       },
     );
   }
