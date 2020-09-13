@@ -3,6 +3,39 @@ import '../widgets/Payment_List_item.dart';
 
 class PaymentListScreen extends StatelessWidget {
   static const routeName = '/paymentlist';
+  final favouritePayment = [
+    {
+      'type' : 'SLT 4G Internet',
+      'account' : '056-856-0-9458625',
+      'branch' :'Peoles bank Matara',
+      'image' : 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+    },
+    {
+      'type' : 'SLT Fibre Internet',
+      'account' : '056-856-0-9458625',
+      'branch' :'Peoles bank Matara',
+      'image' : 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+    },
+    {
+      'type' : 'SLT Peo Tv',
+      'account' : '056-856-0-9458625',
+      'branch' :'Peoles bank Kiribathgoda',
+      'image' : 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+    },
+    {
+      'type' : 'SLT Fibre Internet',
+      'account' : '056-856-0-9458625',
+      'branch' :'Peoles bank Kandy',
+      'image' : 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+    },
+    {
+      'type' : 'SLT 4G Internet',
+      'account' : '056-856-0-9458625',
+      'branch' :'Peoles bank Matara',
+      'image' : 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,13 +67,7 @@ class PaymentListScreen extends StatelessWidget {
             )
           ]),
       body: ListView(
-        children: <Widget>[
-          PaymentListItem(),
-          PaymentListItem(),
-          PaymentListItem(),
-          PaymentListItem(),
-          PaymentListItem(),
-        ],
+        children: favouritePayment.map((payment) => PaymentListItem(payment['type'],payment['account'],payment['branch'], payment['image'])).toList(),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),

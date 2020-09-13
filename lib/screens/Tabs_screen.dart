@@ -77,13 +77,14 @@ class _TabsScreenState extends State<TabsScreen> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                title: Text('Favourite'),
+                title: Text('Favourite' ),
               ),
              
             ],
             currentIndex: _selectedIndex,
-            type: BottomNavigationBarType.shifting,
+            type: BottomNavigationBarType.fixed,
             selectedItemColor: Colors.amber[800],
+            
             backgroundColor: Colors.black,
             unselectedItemColor: Colors.white,
             onTap: _onItemTapped,
