@@ -1,24 +1,35 @@
 import 'package:flutter/material.dart';
 
 class PaymentListItem extends StatelessWidget {
+
+  // final String username;
+  final String account;
+  final String branch;
+  final String type;
+  final String image;
+
+  PaymentListItem(this.type,this.account,this.branch,this.image );
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         leading: CircleAvatar(
-          child: Icon(Icons.person_outline),
+          backgroundColor: Colors.white,
+          child: Image.network(image),
+          // Icon(Icons.person_outline)
         ),
-        title: Text('Thamal Dilanka'),
+        title: Text(type),
         subtitle: Column(
           children: <Widget>[
             Row(
-              children: [Text('056-856-0-9458625')],
+              children: [Text(account),],
             ),
             Row(
               children: [
                 Text(
-                  'people Bank Matara',
+                  branch,
                   style: TextStyle(fontSize: 10),
                 )
               ],

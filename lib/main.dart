@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyApp> {
       title: 'Peoples Redde App',
       theme: ThemeData(
         primaryColor: Colors.black,
-        accentColor: Colors.amber[800],
+        accentColor: Colors.red[800],
       ),
       initialRoute: '/',
       routes: {
