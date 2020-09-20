@@ -5,6 +5,7 @@ import './screens/Settings_screen.dart';
 import 'screens/Tabs_screen.dart';
 import './screens/Payment_List_screen.dart';
 import './screens/Test_screen.dart';
+import './screens/AddFavouritePayment.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,7 +43,8 @@ class _MyHomePageState extends State<MyApp> {
         TransferScreen.routeName: (context) => TransferScreen(),
         SettingsScreen.routeName: (context) => SettingsScreen(),
         TestScreen.routeName: (context) => TestScreen(),
-        PaymentListScreen.routeName: (context) => PaymentListScreen()
+        PaymentListScreen.routeName: (context) => PaymentListScreen(),
+        AddFavouritePayment.routeName : (context) => AddFavouritePayment()
       },
     );
   }
