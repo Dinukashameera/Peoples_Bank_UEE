@@ -161,7 +161,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
-                color: Color(0xFFc8262c)),
+                color: Color(0xFFc8262c),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0)),
               ),
