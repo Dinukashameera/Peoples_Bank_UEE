@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/Payment_List_item.dart';
+import './AddFavouritePayment.dart';
 
 class PaymentListScreen extends StatelessWidget {
   static const routeName = '/paymentlist';
@@ -43,8 +44,8 @@ class PaymentListScreen extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(
-                'https://www.parallax.lk/wp-content/uploads/2018/08/peoples-bank.png',
+              Image.asset(
+                'assets\\images\\peoples-bank.png',
                 fit: BoxFit.cover,
                 height: 30,
                 width: 100,
@@ -71,7 +72,9 @@ class PaymentListScreen extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed(AddFavouritePayment.routeName);
+        },
         backgroundColor: Theme.of(context).accentColor,
       ),
     );
