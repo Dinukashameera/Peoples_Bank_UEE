@@ -44,8 +44,8 @@ class PaymentListScreen extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(
-                'https://www.parallax.lk/wp-content/uploads/2018/08/peoples-bank.png',
+              Image.asset(
+                'assets\\images\\peoples-bank.png',
                 fit: BoxFit.cover,
                 height: 30,
                 width: 100,

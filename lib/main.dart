@@ -6,6 +6,8 @@ import 'screens/Tabs_screen.dart';
 import './screens/Payment_List_screen.dart';
 import './screens/Test_screen.dart';
 import './screens/AddFavouritePayment.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flutter/services.dart' ;
 
 void main() {
   runApp(MyApp());
@@ -29,6 +31,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+        DeviceOrientation.portraitUp,
+      ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Peoples Redde App',
@@ -36,15 +41,21 @@ class _MyHomePageState extends State<MyApp> {
         primaryColor: Colors.black,
         accentColor: Colors.red[800],
       ),
+      home: AnimatedSplashScreen(
+        splash: Image.asset('assets\\images\\peoples-bank.png'),
+        nextScreen: TabsScreen(),
+        splashTransition: SplashTransition.fadeTransition,
+        backgroundColor: Colors.black,
+        duration: 3500,
+      ),
       initialRoute: '/',
       routes: {
-        '/': (context) => TabsScreen(),
         FavouriteScreen.routeName: (context) => FavouriteScreen(),
         TransferScreen.routeName: (context) => TransferScreen(),
         SettingsScreen.routeName: (context) => SettingsScreen(),
         TestScreen.routeName: (context) => TestScreen(),
         PaymentListScreen.routeName: (context) => PaymentListScreen(),
-        AddFavouritePayment.routeName : (context) => AddFavouritePayment()
+        AddFavouritePayment.routeName: (context) => AddFavouritePayment()
       },
     );
   }

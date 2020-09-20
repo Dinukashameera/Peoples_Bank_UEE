@@ -35,8 +35,8 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.network(
-                'https://www.parallax.lk/wp-content/uploads/2018/08/peoples-bank.png',
+              Image.asset(
+                'assets\\images\\peoples-bank.png',
                 fit: BoxFit.cover,
                 height: 30,
                 width: 100,
@@ -63,17 +63,17 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
           children: <Widget>[
             Container(
               width: double.infinity,
-              padding: EdgeInsets.all(15),
+              padding: EdgeInsets.all(10),
               child: Text(
                 'ADD BILL PAYMENT',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontSize: 18.0),
               ),
               decoration: BoxDecoration(
-                color: Colors.black54,
+                color: Color(0xFF424242),
               ),
             ),
             Container(
-              margin: EdgeInsets.only(top: 50, left: 40, right: 40, bottom: 30),
+              margin: EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 75),
               child: Column(
                 children: <Widget>[
                   TextField(
@@ -92,7 +92,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                     // onChanged: (val) => amountInput = val,
                   ),
                   SizedBox(
-                    height: 25,
+                    height: 35,
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -110,7 +110,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                     // onChanged: (val) => amountInput = val,
                   ),
                   SizedBox(
-                    height: 25,
+                    height: 35,
                   ),
                   TextField(
                     decoration: InputDecoration(
@@ -128,7 +128,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                     // onChanged: (val) => amountInput = val,
                   ),
                   SizedBox(
-                    height: 25,
+                    height: 35,
                   ),
                   TextField(
                     controller: dateController,
@@ -161,7 +161,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                   style: TextStyle(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
-                color: Colors.red,
+                color: Color(0xFFc8262c)),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30.0)),
               ),
