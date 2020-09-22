@@ -3,70 +3,91 @@ import '../widgets/Beneficiary_List_item.dart';
 
 class FundTransferScreen extends StatelessWidget {
   static const routeName = '/beneficiarylist';
-  final favouritePayment = [
+  final favouriteBeneficiary = [
     {
       'name': 'Amila Senewirathne',
-      'account': '056-856-0-9458625',
+      'account': '05685609458625',
       'branch': 'People\'s bank - Matara',
       'image':
-          'https://ui-avatars.com/api/?size=128&rounded=true&background=4caf50&color=fff&name=Am+Se'
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=4caf50&color=fff&name=Am+Se',
+      'intraORinter': 'intra',
+      'contact': '0712343546'
     },
     {
       'name': 'Thamal Dilanka',
-      'account': '021-976-2-8668642',
+      'account': '02197628668642',
       'branch': 'Sampath Bank - Koswatta',
       'image':
           'https://ui-avatars.com/api/?size=128&rounded=true&background=00bcd4&color=fff&name=Th+Dil',
+      'intraORinter': 'inter',
+      'contact': '0717676876'
     },
     {
       'name': 'Kavindu Tharaka',
-      'account': '235-346-0-8458688',
+      'account': '23534608458688',
       'branch': 'People\'s bank - Weeraketiya',
       'image':
-          'https://ui-avatars.com/api/?size=128&rounded=true&background=f44336&color=fff&name=Ka+Th'
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=f44336&color=fff&name=Ka+Th',
+      'intraORinter': 'intra',
+      'contact': '0767362543'
     },
     {
       'name': 'Chamod Rathnayake',
-      'account': '845-323-4-67834567',
+      'account': '845323467834567',
       'branch': 'Bank of Ceylon - Chilaw',
       'image':
           'https://ui-avatars.com/api/?size=128&rounded=true&background=607d8b&color=fff&name=Ch+Ra',
-    },
-    {
-      'name': 'Dinuka Perera',
-      'account': '321-976-2-8668642',
-      'branch': 'Bank of Ceylon - Makola',
-      'image':
-          'https://ui-avatars.com/api/?size=128&rounded=true&background=8bc34a&color=fff&name=Di+Pe',
+      'intraORinter': 'inter',
+      'contact': '0756873214'
     },
     {
       'name': 'Isuru Lakshan',
-      'account': '912-236-1-5558683',
-      'branch': 'Nations Trust Bank - Sooriyawewa',
+      'account': '32197628668642',
+      'branch': 'Bank of Ceylon - Sooriyawewa',
       'image':
-          'https://ui-avatars.com/api/?size=128&rounded=true&background=8d64d7&color=fff&name=Is+Lak'
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=8bc34a&color=fff&name=Di+Pe',
+      'intraORinter': 'inter',
+      'contact': '0778989744'
+    },
+    {
+      'name': 'Dinuka Perera',
+      'account': '91223675558683',
+      'branch': 'Nations Trust Bank - Makola',
+      'image':
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=8d64d7&color=fff&name=Is+Lak',
+      'intraORinter': 'inter',
+      'contact': '0711122341'
     },
     {
       'name': 'Charitha Attalage',
-      'account': '732-724-6-1356245',
+      'account': '73272461356245',
       'branch': 'Commercial Bank - Tangalle',
       'image':
           'https://ui-avatars.com/api/?size=128&rounded=true&background=00bcd4&color=fff&name=Ch+Att',
+      'intraORinter': 'inter',
+      'contact': '0723423456'
     },
-
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: favouritePayment
-            .map((payment) => BeneficiaryListItem(payment['name'],
-                payment['account'], payment['branch'], payment['image']))
+        children: favouriteBeneficiary
+            .map((beneficiary) => BeneficiaryListItem(
+                beneficiary['name'],
+                beneficiary['account'],
+                beneficiary['branch'],
+                beneficiary['image'],
+                beneficiary['intraORinter'],
+                beneficiary['contact']))
             .toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add, color: Color(0xFFFFFFFF),),
+        child: Icon(
+          Icons.add,
+          color: Color(0xFFFFFFFF),
+        ),
         onPressed: () {},
         backgroundColor: Color(0xFFC8262C),
       ),

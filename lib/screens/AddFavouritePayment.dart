@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets//paymentSummary.dart';
 import 'package:intl/intl.dart';
 
 class AddFavouritePayment extends StatefulWidget {
@@ -10,6 +11,38 @@ class AddFavouritePayment extends StatefulWidget {
 class _AddFavouritePaymentState extends State<AddFavouritePayment> {
   DateTime _selectedDate;
   TextEditingController dateController = new TextEditingController();
+  TextEditingController billTypeController = new TextEditingController();
+  TextEditingController accountNumberController = new TextEditingController();
+  TextEditingController amountController = new TextEditingController();
+
+  var billDetails = {};
+
+  void _submitData(BuildContext ctx){
+    // print(billTypeController.text.toString());
+    // print(accountNumberController.text.toString());
+    // print(amountController.text.toString());
+    // print(dateController.text.toString());
+
+    billDetails = {
+      "type": billTypeController.text.toString(),
+      "account":accountNumberController.text.toString(),
+      "amount":amountController.text.toString(),
+      "date":dateController.text.toString()
+    };
+
+    print(billDetails);
+      showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            child: PaymentSummary(billDetails),
+            behavior: HitTestBehavior.opaque,
+          );
+        });
+  }
+
+
   void _showDatePicker() {
     showDatePicker(
             context: context,
@@ -74,10 +107,12 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 75),
+                margin:
+                    EdgeInsets.only(top: 50, left: 30, right: 30, bottom: 75),
                 child: Column(
                   children: <Widget>[
                     TextField(
+                      controller: billTypeController,
                       decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(vertical: 0.0),
@@ -86,6 +121,10 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                             borderSide: BorderSide(width: 1.0),
                           ),
                           labelText: 'Bill Type',
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.black, width: 1.0),
+                          ),
                           prefixIcon: Icon(Icons.monetization_on)),
                       // controller: _amountController,
                       keyboardType: TextInputType.number,
@@ -96,10 +135,15 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                       height: 35,
                     ),
                     TextField(
+                      controller: accountNumberController,
                       decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(vertical: 0.0),
                           isDense: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.black, width: 1.0),
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(width: 1.0),
                           ),
@@ -114,10 +158,15 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                       height: 35,
                     ),
                     TextField(
+                      controller: amountController,
                       decoration: InputDecoration(
                           contentPadding:
                               const EdgeInsets.symmetric(vertical: 0.0),
                           isDense: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.black, width: 1.0),
+                          ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(width: 1.0),
                           ),
@@ -134,6 +183,10 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                     TextField(
                       controller: dateController,
                       decoration: InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                                color: Colors.black, width: 1.0),
+                          ),
                           contentPadding:
                               const EdgeInsets.symmetric(vertical: 0.0),
                           isDense: true,
@@ -156,7 +209,10 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                 minWidth: 120.0,
                 height: 40.0,
                 child: RaisedButton(
-                  onPressed: () {},
+                  
+                  onPressed: () {
+                    _submitData(context);
+                  },
                   child: Text(
                     'ADD',
                     style: TextStyle(

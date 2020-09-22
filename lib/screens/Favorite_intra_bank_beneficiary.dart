@@ -1,13 +1,41 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:peoples_bank/dummy_data/Data.dart';
+import 'package:peoples_bank/widgets/Beneficiary_List_item.dart';
 
-class IntrabankTransferScreen extends StatelessWidget {
-  static const routeName = '/intraBankTransfer';
+class FavoriteIntraBankBeneficiary extends StatelessWidget {
+  static const routeName = '/favoriteIntraBankBeneficiary';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets\\images\\peoples-bank.png',
+                fit: BoxFit.cover,
+                height: 30,
+                width: 100,
+              )
+            ],
+          ),
+          elevation: 0,
+          actions: [
+            Container(
+              margin: EdgeInsets.only(right: 15),
+              child: Row(
+                children: [
+                  Icon(Icons.notifications_none),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Icon(Icons.access_time),
+                ],
+              ),
+            )
+          ]),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -18,11 +46,11 @@ class IntrabankTransferScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Intra Bank Fund Transfer',
+                    'Favorite Beneficiary Fund Transfer',
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                   Text(
-                    'Transfer fund between Peoples\'s Bank Branches',
+                    'Transfer fund to Favorite Beneficiaries',
                     style: TextStyle(color: Colors.white54, fontSize: 11.0),
                   ),
                 ],
@@ -63,10 +91,12 @@ class MyCustomFormState extends State<MyCustomForm> {
   // Note: This is a GlobalKey<FormState>,
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
-  final toAccNumController = TextEditingController();
-  final beneficiaryNameController = TextEditingController();
+  TextEditingController toAccNumController = TextEditingController();
+  TextEditingController beneficiaryNameController = TextEditingController();
+  TextEditingController beneficiaryImageController = TextEditingController();
   final transferAmountController = TextEditingController();
-  final beneficiaryContactNumController = TextEditingController();
+  TextEditingController beneficiaryContactNumController =
+      TextEditingController();
   final noteController = TextEditingController();
   TextEditingController fromAccountController = TextEditingController();
 
@@ -87,15 +117,31 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
+    final BeneficiaryListItem args = ModalRoute.of(context).settings.arguments;
 
-    fromAccountController =
-        TextEditingController(text: FromAccountNumberService.accNumbers[0]);
+    toAccNumController = TextEditingController(text: args.account);
+    beneficiaryNameController = TextEditingController(text: args.name);
+    beneficiaryContactNumController = TextEditingController(text: args.contact);
+    beneficiaryImageController = TextEditingController(text: args.image);
+    fromAccountController = TextEditingController(text: FromAccountNumberService.accNumbers[0]);
+
 
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+//----------------------------------------------------------------------------//
+          Padding(
+              padding: EdgeInsets.fromLTRB(
+                  0, 0, 0, MediaQuery.of(context).size.height / 40),
+              child: Center(
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(args.image),
+                  radius: MediaQuery.of(context).size.height * 0.075,
+                ),
+              )),
+//----------------------------------------------------------------------------//
 //----------------------------------------------------------------------------//
           Padding(
             padding: EdgeInsets.fromLTRB(
