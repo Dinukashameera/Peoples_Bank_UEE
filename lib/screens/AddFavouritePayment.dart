@@ -92,7 +92,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
             )
           ]),
       body: SingleChildScrollView(
-        child: Container(
+              child: Container(
           child: Column(
             children: <Widget>[
               Container(

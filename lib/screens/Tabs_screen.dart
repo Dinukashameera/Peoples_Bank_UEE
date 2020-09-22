@@ -60,7 +60,7 @@ class _TabsScreenState extends State<TabsScreen> {
         ),
         drawer: MainDrawer(),
         bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(canvasColor: Colors.black),
+          data: Theme.of(context).copyWith(canvasColor: Color(0xFF212121),),
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
@@ -83,9 +83,9 @@ class _TabsScreenState extends State<TabsScreen> {
             ],
             currentIndex: _selectedIndex,
             type: BottomNavigationBarType.fixed,
-            selectedItemColor: Colors.amber[800],
+            selectedItemColor: Color(0xFFfbb418),
             
-            backgroundColor: Colors.black,
+            backgroundColor: Color(0xFF212121),
             unselectedItemColor: Colors.white,
             onTap: _onItemTapped,
           ),
