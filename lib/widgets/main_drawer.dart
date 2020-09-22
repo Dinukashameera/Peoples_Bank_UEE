@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:peoples_bank/screens/Favourites_screen.dart';
-import 'package:peoples_bank/screens/Transfer_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(IconData icon, String title, Function tapHandler) {
@@ -47,11 +45,10 @@ class MainDrawer extends StatelessWidget {
           buildListTile(Icons.favorite, "Test Route", () {
             //navigate when code eka gahapan
             //naviagte.pushName
-      
           }),
           buildListTile(Icons.settings, "Methanata items dapan", () {}),
           buildListTile(Icons.payment, "Methanata items dapan", () {}),
-          buildListTile(Icons.blur_circular, "Methanata items dapan", () {})
+          buildListTile(Icons.blur_circular, "Methanata items dapan", () {}),
         ],
       ),
     );

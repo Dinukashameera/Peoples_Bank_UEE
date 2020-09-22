@@ -38,8 +38,8 @@ class _MyHomePageState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Peoples Redde App',
       theme: ThemeData(
-        primaryColor: Colors.black,
-        accentColor: Colors.red[800],
+        primaryColor: Color(0xFF212121),
+        accentColor: Color(0xFFfbb418),
       ),
       home: AnimatedSplashScreen(
         splash: Image.asset('assets\\images\\peoples-bank.png'),
