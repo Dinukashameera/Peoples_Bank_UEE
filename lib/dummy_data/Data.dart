@@ -18,9 +18,39 @@ class FromAccountNumberService {
   }
 }
 
+class PaymentOptionsService {
+  static final List<String> paymentOptions = [
+    'LANKAPAY - ONLINE',
+    'LANKAPAY - SLIPS'
+  ];
+
+  static List<String> getSuggestions(String query) {
+    List<String> matches = List();
+    matches.addAll(paymentOptions);
+
+    matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
+    return matches;
+  }
+}
+
+class IdentityTypeService {
+  static final List<String> identityOptions = [
+    'National ID Number',
+    'Driving License Number',
+    'Passport Number',
+  ];
+
+  static List<String> getSuggestions(String query) {
+    List<String> matches = List();
+    matches.addAll(identityOptions);
+
+    matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
+    return matches;
+  }
+}
+
 class BankNamesService {
   static final List<String> bankNames = [
-    'People\'s Bank',
     'Amana Bank',
     'Bank of Ceylon',
     'Commercial Bank',

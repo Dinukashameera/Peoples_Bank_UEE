@@ -22,7 +22,7 @@ class IntrabankTransferScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                   Text(
-                    'Transfer fund between Peoples\'s Bank Branches',
+                    'Transfer fund between Peoples\'s Bank accounts',
                     style: TextStyle(color: Colors.white54, fontSize: 11.0),
                   ),
                 ],
@@ -69,6 +69,7 @@ class MyCustomFormState extends State<MyCustomForm> {
   final beneficiaryContactNumController = TextEditingController();
   final noteController = TextEditingController();
   TextEditingController fromAccountController = TextEditingController();
+  TextEditingController toAccountBranchController = TextEditingController();
 
   String selectedValue;
   String selectedFromAccNum;
@@ -81,16 +82,15 @@ class MyCustomFormState extends State<MyCustomForm> {
     transferAmountController.dispose();
     beneficiaryContactNumController.dispose();
     noteController.dispose();
+    fromAccountController.dispose();
+    toAccountBranchController.dispose();
+
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
-
-    fromAccountController =
-        TextEditingController(text: FromAccountNumberService.accNumbers[0]);
-
     return Form(
       key: _formKey,
       child: Column(
@@ -116,7 +116,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                       FocusScope.of(context).nextFocus();
                     },
                     decoration: InputDecoration(
-                        labelText: "From Account Numebr",
+                        labelText: "From Account Number",
                         hintText: '783522398924',
                         prefixIcon: Icon(Icons.account_balance),
                         border: OutlineInputBorder(
@@ -150,8 +150,68 @@ class MyCustomFormState extends State<MyCustomForm> {
                     this.fromAccountController.text = suggestion;
                   },
                   validator: (value) => value.isEmpty
-                      ? 'Please enter from account number!'
+                      ? 'Please enter From account number!'
                       : null,
+                  onSaved: (value) => this.selectedFromAccNum = value,
+                ),
+              ],
+            ),
+          ),
+//----------------------------------------------------------------------------//
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                0, 0, 0, MediaQuery.of(context).size.height / 40),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0, 0, 0, MediaQuery.of(context).size.height / 120),
+                    ),
+                  ],
+                ),
+                TypeAheadFormField(
+                  textFieldConfiguration: TextFieldConfiguration(
+                    onEditingComplete: () {
+                      FocusScope.of(context).nextFocus();
+                    },
+                    decoration: InputDecoration(
+                        labelText: "To Account\'s Branch",
+                        hintText: 'Akkaraipattu',
+                        prefixIcon: Icon(Icons.account_balance),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(5))),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: MediaQuery.of(context).size.height / 50,
+                            horizontal:
+                                MediaQuery.of(context).size.width / 25)),
+                    controller: this.toAccountBranchController,
+                  ),
+                  suggestionsCallback: (pattern) {
+                    return BankBranchNameService.getSuggestions(pattern);
+                  },
+                  itemBuilder: (context, suggestion) {
+                    return SingleChildScrollView(
+                      child: ListTile(
+                        title: Text(suggestion),
+                      ),
+                    );
+                  },
+                  transitionBuilder:
+                      (context, suggestionsBox, animationController) =>
+                          FadeTransition(
+                    child: suggestionsBox,
+                    opacity: CurvedAnimation(
+                        parent: animationController,
+                        curve: Curves.fastOutSlowIn),
+                  ),
+                  onSuggestionSelected: (suggestion) {
+                    this.toAccountBranchController.text = suggestion;
+                  },
+                  validator: (value) =>
+                      value.isEmpty ? 'Please enter To account\'s branch!' : null,
                   onSaved: (value) => this.selectedFromAccNum = value,
                 ),
               ],
@@ -179,7 +239,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   controller: toAccNumController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                      labelText: "To Account Numebr",
+                      labelText: "To Account Number",
                       hintText: '783522398924',
                       prefixIcon: Icon(Icons.account_balance),
                       border: OutlineInputBorder(
@@ -539,6 +599,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                     beneficiaryContactNumController.text = '';
                     transferAmountController.text = '';
                     noteController.text = '';
+                    fromAccountController.text = '';
+                    toAccountBranchController.text = '';
+
                   }
                 },
                 child: Container(

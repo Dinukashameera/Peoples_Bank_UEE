@@ -1,28 +1,54 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:peoples_bank/dummy_data/Data.dart';
+import 'package:peoples_bank/widgets/Beneficiary_List_item.dart';
 
-class NonAccountHolderTransferScreen extends StatelessWidget {
-  static const routeName = '/nonAccountHolderTransfer';
+class FavoriteInterBankBeneficiary extends StatelessWidget {
+  static const routeName = '/favoriteInterBankBeneficiary';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
+      appBar: AppBar(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets\\images\\peoples-bank.png',
+              fit: BoxFit.cover,
+              height: 30,
+              width: 100,
+            )
+          ],
+        ),
+        elevation: 0,
+        actions: [
+          Container(
+            margin: EdgeInsets.only(right: 15),
+            child: Row(
+              children: [
+                Icon(Icons.notifications_none),
+                SizedBox(
+                  width: 10,
+                ),
+                Icon(Icons.access_time),
+              ],
+            ),
+          )
+        ],
+        bottom: PreferredSize(
+            child: Container(
               width: double.infinity,
               padding: EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    'Non-Account Holder Transfer',
+                    'Favorite Beneficiary Fund Transfer',
                     style: TextStyle(color: Colors.white, fontSize: 15.0),
                   ),
                   Text(
-                    'Transfer fund to Non-Account holding person',
+                    'Transfer fund to Favorite Beneficiaries',
                     style: TextStyle(color: Colors.white54, fontSize: 11.0),
                   ),
                 ],
@@ -31,6 +57,11 @@ class NonAccountHolderTransferScreen extends StatelessWidget {
                 color: Color(0xFF424242),
               ),
             ),
+            preferredSize: Size.fromHeight(50.0)),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
             Padding(
               padding: EdgeInsets.fromLTRB(
                   MediaQuery.of(context).size.width / 15,
@@ -63,17 +94,15 @@ class MyCustomFormState extends State<MyCustomForm> {
   // Note: This is a GlobalKey<FormState>,
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
-  final toAccNumController = TextEditingController();
-  final beneficiaryNameController = TextEditingController();
-  final beneficiaryIdNumberController = TextEditingController();
-  final beneficiaryAddressLineOneController = TextEditingController();
-  final beneficiaryAddressLineTwoController = TextEditingController();
-  final beneficiaryPostalCodeController = TextEditingController();
-  final transferAmountController = TextEditingController();
-  final beneficiaryContactNumController = TextEditingController();
+  TextEditingController toAccNumController = TextEditingController();
+  TextEditingController beneficiaryNameController = TextEditingController();
+  TextEditingController transferAmountController = TextEditingController();
+  TextEditingController beneficiaryImageController = TextEditingController();
+  TextEditingController beneficiaryContactNumController =
+      TextEditingController();
   final noteController = TextEditingController();
   TextEditingController fromAccountController = TextEditingController();
-  TextEditingController identityOptionsController = TextEditingController();
+  TextEditingController paymentOptionController = TextEditingController();
   TextEditingController toAccountBankController = TextEditingController();
   TextEditingController toAccountBranchController = TextEditingController();
 
@@ -88,7 +117,7 @@ class MyCustomFormState extends State<MyCustomForm> {
     transferAmountController.dispose();
     beneficiaryContactNumController.dispose();
     fromAccountController.dispose();
-    identityOptionsController.dispose();
+    paymentOptionController.dispose();
     noteController.dispose();
     toAccountBankController.dispose();
     toAccountBranchController.dispose();
@@ -98,12 +127,32 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
+    final BeneficiaryListItem args = ModalRoute.of(context).settings.arguments;
+
+    toAccNumController = TextEditingController(text: args.account);
+    beneficiaryNameController = TextEditingController(text: args.name);
+    beneficiaryContactNumController = TextEditingController(text: args.contact);
+    beneficiaryImageController = TextEditingController(text: args.image);
+    toAccountBranchController =
+        TextEditingController(text: args.branch.split(" - ")[1]);
+    toAccountBankController =
+        TextEditingController(text: args.branch.split(" - ")[0]);
 
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+//----------------------------------------------------------------------------//
+          Padding(
+              padding: EdgeInsets.fromLTRB(
+                  0, 0, 0, MediaQuery.of(context).size.height / 40),
+              child: Center(
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(args.image),
+                  radius: MediaQuery.of(context).size.height * 0.075,
+                ),
+              )),
 //----------------------------------------------------------------------------//
           Padding(
             padding: EdgeInsets.fromLTRB(
@@ -158,7 +207,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     this.fromAccountController.text = suggestion;
                   },
                   validator: (value) => value.isEmpty
-                      ? 'Please enter From account number!'
+                      ? 'Please enter from account number!'
                       : null,
                   onSaved: (value) => this.selectedFromAccNum = value,
                 ),
@@ -185,9 +234,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                       FocusScope.of(context).nextFocus();
                     },
                     decoration: InputDecoration(
-                        labelText: "Beneficiary Identity Options",
-                        hintText: 'National ID Number',
-                        prefixIcon: Icon(Icons.verified_user),
+                        labelText: "Payment Option",
+                        hintText: 'LANKAPAY - ONLINE',
+                        prefixIcon: Icon(Icons.payment),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -195,10 +244,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                             vertical: MediaQuery.of(context).size.height / 50,
                             horizontal:
                                 MediaQuery.of(context).size.width / 25)),
-                    controller: this.identityOptionsController,
+                    controller: this.paymentOptionController,
                   ),
                   suggestionsCallback: (pattern) {
-                    return IdentityTypeService.getSuggestions(pattern);
+                    return PaymentOptionsService.getSuggestions(pattern);
                   },
                   itemBuilder: (context, suggestion) {
                     return SingleChildScrollView(
@@ -216,10 +265,133 @@ class MyCustomFormState extends State<MyCustomForm> {
                         curve: Curves.fastOutSlowIn),
                   ),
                   onSuggestionSelected: (suggestion) {
-                    this.identityOptionsController.text = suggestion;
+                    this.paymentOptionController.text = suggestion;
                   },
                   validator: (value) =>
-                      value.isEmpty ? 'Please enter identity option!' : null,
+                      value.isEmpty ? 'Please enter payment option!' : null,
+                  onSaved: (value) => this.selectedFromAccNum = value,
+                ),
+              ],
+            ),
+          ),
+//----------------------------------------------------------------------------//
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                0, 0, 0, MediaQuery.of(context).size.height / 40),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0, 0, 0, MediaQuery.of(context).size.height / 120),
+                    ),
+                  ],
+                ),
+                TypeAheadFormField(
+                  textFieldConfiguration: TextFieldConfiguration(
+                    enabled: false,
+                    onEditingComplete: () {
+                      FocusScope.of(context).nextFocus();
+                    },
+                    decoration: InputDecoration(
+                        labelText: "To Account\'s Bank",
+                        hintText: 'Amana Bank',
+                        prefixIcon: Icon(Icons.account_balance),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(5))),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: MediaQuery.of(context).size.height / 50,
+                            horizontal:
+                                MediaQuery.of(context).size.width / 25)),
+                    controller: this.toAccountBankController,
+                  ),
+                  suggestionsCallback: (pattern) {
+                    return BankNamesService.getSuggestions(pattern);
+                  },
+                  itemBuilder: (context, suggestion) {
+                    return SingleChildScrollView(
+                      child: ListTile(
+                        title: Text(suggestion),
+                      ),
+                    );
+                  },
+                  transitionBuilder:
+                      (context, suggestionsBox, animationController) =>
+                          FadeTransition(
+                    child: suggestionsBox,
+                    opacity: CurvedAnimation(
+                        parent: animationController,
+                        curve: Curves.fastOutSlowIn),
+                  ),
+                  onSuggestionSelected: (suggestion) {
+                    this.toAccountBankController.text = suggestion;
+                  },
+                  validator: (value) =>
+                      value.isEmpty ? 'Please enter To account\'s bank!' : null,
+                  onSaved: (value) => this.selectedFromAccNum = value,
+                ),
+              ],
+            ),
+          ),
+//----------------------------------------------------------------------------//
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                0, 0, 0, MediaQuery.of(context).size.height / 40),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0, 0, 0, MediaQuery.of(context).size.height / 120),
+                    ),
+                  ],
+                ),
+                TypeAheadFormField(
+                  textFieldConfiguration: TextFieldConfiguration(
+                    enabled: false,
+                    onEditingComplete: () {
+                      FocusScope.of(context).nextFocus();
+                    },
+                    decoration: InputDecoration(
+                        labelText: "To Account\'s Branch",
+                        hintText: 'Akkaraipattu',
+                        prefixIcon: Icon(Icons.account_balance),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(5))),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: MediaQuery.of(context).size.height / 50,
+                            horizontal:
+                                MediaQuery.of(context).size.width / 25)),
+                    controller: this.toAccountBranchController,
+                  ),
+                  suggestionsCallback: (pattern) {
+                    return BankBranchNameService.getSuggestions(pattern);
+                  },
+                  itemBuilder: (context, suggestion) {
+                    return SingleChildScrollView(
+                      child: ListTile(
+                        title: Text(suggestion),
+                      ),
+                    );
+                  },
+                  transitionBuilder:
+                      (context, suggestionsBox, animationController) =>
+                          FadeTransition(
+                    child: suggestionsBox,
+                    opacity: CurvedAnimation(
+                        parent: animationController,
+                        curve: Curves.fastOutSlowIn),
+                  ),
+                  onSuggestionSelected: (suggestion) {
+                    this.toAccountBranchController.text = suggestion;
+                  },
+                  validator: (value) => value.isEmpty
+                      ? 'Please enter To account\'s branch!'
+                      : null,
                   onSaved: (value) => this.selectedFromAccNum = value,
                 ),
               ],
@@ -240,16 +412,17 @@ class MyCustomFormState extends State<MyCustomForm> {
                   ],
                 ),
                 TextFormField(
+                  enabled: false,
                   onEditingComplete: () {
                     FocusScope.of(context).nextFocus();
                   },
                   autofocus: false,
-                  controller: beneficiaryIdNumberController,
-                  keyboardType: TextInputType.text,
+                  controller: toAccNumController,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                      labelText: "Beneficiary Identity Number",
-                      hintText: '852132345V',
-                      prefixIcon: Icon(Icons.person),
+                      labelText: "To Account Number",
+                      hintText: '783522398924',
+                      prefixIcon: Icon(Icons.account_balance),
                       border: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5))),
@@ -258,7 +431,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                           horizontal: MediaQuery.of(context).size.width / 25)),
                   validator: (value) {
                     if (value.isEmpty) {
-                      return 'Please enter beneficiary\'s Identity number!';
+                      return 'Please enter To account number!';
                     }
                     return null;
                   },
@@ -281,6 +454,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   ],
                 ),
                 TextFormField(
+                  enabled: false,
                   onEditingComplete: () {
                     FocusScope.of(context).nextFocus();
                   },
@@ -367,6 +541,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   ],
                 ),
                 TextFormField(
+                  enabled: false,
                   onEditingComplete: () {
                     FocusScope.of(context).nextFocus();
                   },
@@ -388,124 +563,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                       return 'Please enter beneficiary\'s contact number!';
                     } else if (value.length != 10) {
                       return 'Contact number should have only 10 numbers!';
-                    }
-                    return null;
-                  },
-                ),
-              ],
-            ),
-          ),
-
-//----------------------------------------------------------------------------//
-          Padding(
-            padding: EdgeInsets.fromLTRB(
-                0, 0, 0, MediaQuery.of(context).size.height / 40),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          0, 0, 0, MediaQuery.of(context).size.height / 120),
-                    ),
-                  ],
-                ),
-                TextFormField(
-                  onEditingComplete: () {
-                    FocusScope.of(context).nextFocus();
-                  },
-                  autofocus: false,
-                  controller: beneficiaryAddressLineOneController,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                      labelText: "Beneficiary Address Line 1",
-                      hintText: 'No. 30, 5th Cross Road',
-                      prefixIcon: Icon(Icons.contact_mail),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(5))),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.height / 50,
-                          horizontal: MediaQuery.of(context).size.width / 25)),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter beneficiary\'s Address!';
-                    }
-                    return null;
-                  },
-                ),
-              ],
-            ),
-          ),
-//----------------------------------------------------------------------------//
-          Padding(
-            padding: EdgeInsets.fromLTRB(
-                0, 0, 0, MediaQuery.of(context).size.height / 40),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          0, 0, 0, MediaQuery.of(context).size.height / 120),
-                    ),
-                  ],
-                ),
-                TextFormField(
-                  onEditingComplete: () {
-                    FocusScope.of(context).nextFocus();
-                  },
-                  autofocus: false,
-                  controller: beneficiaryAddressLineTwoController,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                      labelText: "Beneficiary Address Line 2",
-                      hintText: 'Walpala, Matara',
-                      prefixIcon: Icon(Icons.contact_mail),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(5))),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.height / 50,
-                          horizontal: MediaQuery.of(context).size.width / 25)),
-                ),
-              ],
-            ),
-          ),
-//----------------------------------------------------------------------------//
-          Padding(
-            padding: EdgeInsets.fromLTRB(
-                0, 0, 0, MediaQuery.of(context).size.height / 40),
-            child: Column(
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          0, 0, 0, MediaQuery.of(context).size.height / 120),
-                    ),
-                  ],
-                ),
-                TextFormField(
-                  onEditingComplete: () {
-                    FocusScope.of(context).nextFocus();
-                  },
-                  autofocus: false,
-                  controller: beneficiaryPostalCodeController,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                      labelText: "Beneficiary Postal Code",
-                      hintText: '85240',
-                      prefixIcon: Icon(Icons.local_post_office),
-                      border: OutlineInputBorder(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(5))),
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: MediaQuery.of(context).size.height / 50,
-                          horizontal: MediaQuery.of(context).size.width / 25)),
-                  validator: (value) {
-                    if (value.isEmpty) {
-                      return 'Please enter beneficiary\'s Postal Code!';
                     }
                     return null;
                   },
@@ -722,17 +779,13 @@ class MyCustomFormState extends State<MyCustomForm> {
 
                     toAccNumController.text = '';
                     beneficiaryNameController.text = '';
-                    beneficiaryIdNumberController.text = '';
                     beneficiaryContactNumController.text = '';
                     transferAmountController.text = '';
                     noteController.text = '';
-                    beneficiaryAddressLineOneController.text = '';
                     fromAccountController.text = '';
-                    identityOptionsController.text = '';
+                    paymentOptionController.text = '';
                     toAccountBankController.text = '';
-                    beneficiaryPostalCodeController.text = '';
                     toAccountBranchController.text = '';
-                    beneficiaryAddressLineTwoController.text = '';
                   }
                 },
                 child: Container(

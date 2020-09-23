@@ -3,7 +3,7 @@ import '../widgets/Beneficiary_List_item.dart';
 
 class FundTransferScreen extends StatelessWidget {
   static const routeName = '/beneficiarylist';
-  final favouriteBeneficiary = [
+  var _favouriteBeneficiary = [
     {
       'name': 'Amila Senewirathne',
       'account': '05685609458625',
@@ -45,7 +45,7 @@ class FundTransferScreen extends StatelessWidget {
       'account': '32197628668642',
       'branch': 'Bank of Ceylon - Sooriyawewa',
       'image':
-          'https://ui-avatars.com/api/?size=128&rounded=true&background=8bc34a&color=fff&name=Di+Pe',
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=8d64d7&color=fff&name=Is+Lak',
       'intraORinter': 'inter',
       'contact': '0778989744'
     },
@@ -54,7 +54,7 @@ class FundTransferScreen extends StatelessWidget {
       'account': '91223675558683',
       'branch': 'Nations Trust Bank - Makola',
       'image':
-          'https://ui-avatars.com/api/?size=128&rounded=true&background=8d64d7&color=fff&name=Is+Lak',
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=8bc34a&color=fff&name=Di+Pe',
       'intraORinter': 'inter',
       'contact': '0711122341'
     },
@@ -66,14 +66,20 @@ class FundTransferScreen extends StatelessWidget {
           'https://ui-avatars.com/api/?size=128&rounded=true&background=00bcd4&color=fff&name=Ch+Att',
       'intraORinter': 'inter',
       'contact': '0723423456'
-    },
+    }
   ];
+
+  get favouriteBeneficiary => _favouriteBeneficiary;
+
+  set favouriteBeneficiary(favouriteBeneficiary) {
+    _favouriteBeneficiary = favouriteBeneficiary;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: favouriteBeneficiary
+        children: _favouriteBeneficiary
             .map((beneficiary) => BeneficiaryListItem(
                 beneficiary['name'],
                 beneficiary['account'],
@@ -88,7 +94,9 @@ class FundTransferScreen extends StatelessWidget {
           Icons.add,
           color: Color(0xFFFFFFFF),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed('/addBeneficiary');
+        },
         backgroundColor: Color(0xFFC8262C),
       ),
     );
