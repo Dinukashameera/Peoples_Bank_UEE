@@ -15,10 +15,10 @@ class _TabsScreenState extends State<TabsScreen> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    TransferScreen(),
-    SettingsScreen(),
     BillsScreen(),
+    TransferScreen(),
     FavouriteScreen(),
+    SettingsScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -64,19 +64,19 @@ class _TabsScreenState extends State<TabsScreen> {
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text('Biller'),
-              ),
-              BottomNavigationBarItem(
                 icon: Icon(Icons.send),
                 title: Text('Transfers'),
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                title: Text('Home'),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.favorite_border,),
                 title: Text('Home'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
+                icon: Icon(Icons.favorite),
                 title: Text('Favourite' ),
               ),
              

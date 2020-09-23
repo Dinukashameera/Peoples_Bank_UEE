@@ -71,11 +71,11 @@ class PaymentListScreen extends StatelessWidget {
         children: favouritePayment.map((payment) => PaymentListItem(payment['type'],payment['account'],payment['branch'], payment['image'])).toList(),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+        child: Icon(Icons.add, color: Colors.white,),
         onPressed: () {
           Navigator.of(context).pushNamed(AddFavouritePayment.routeName);
         },
-        backgroundColor: Theme.of(context).accentColor,
+       backgroundColor: Color(0xFFC8262C),
       ),
     );
   }

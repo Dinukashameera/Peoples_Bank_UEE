@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/favouritePaymentDelete.dart';
 
 class PaymentListItem extends StatelessWidget {
   // final String username;
@@ -10,50 +11,88 @@ class PaymentListItem extends StatelessWidget {
   PaymentListItem(this.type, this.account, this.branch, this.image);
 
   void deleteModal(BuildContext context, String type, String branch) {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return Container(
-          height: 350,
-          color: Colors.green,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(35.0),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  const Icon(Icons.warning),
-                  Text('Are you sure to delete?'),
-                  Text(type),
-                  Text(branch),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      RaisedButton(
-                        child: const Text('Cancel'),
-                        onPressed: () => Navigator.pop(context),
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            color: Color(0xFF737373),
+            height: MediaQuery.of(context).size.height * 0.32,
+            child: Container(
+              child: Container(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 30, bottom: 3),
+                      child: Icon(
+                        Icons.warning,
+                        size: 40.0,
                       ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      RaisedButton(
-                        color: Theme.of(context).accentColor,
-                        child: const Text(
-                          'Delete',
-                          style: TextStyle(color: Colors.white),
+                    ),
+                    Container(
+                        child: Text(
+                      'Are you sure to delete?',
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )),
+                    Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Text(
+                        type,
+                        style: TextStyle(
+                          fontSize: 18.0,
                         ),
-                        onPressed: () => Navigator.pop(context),
-                      )
-                    ],
-                  )
-                ],
+                      ),
+                    ),
+                    Container(
+                      child: Text(branch,
+                          style: TextStyle(
+                              fontSize: 13.0, color: Color(0xFFbdbdbd))),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ButtonTheme(
+                            minWidth: 120.0,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Text('Cancel'),
+                              color: Color(0xFF757575),
+                              textColor: Colors.white,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0)),
+                          ),
+                          SizedBox(
+                            width: 15,
+                          ),
+                          ButtonTheme(
+                            minWidth: 120.0,
+                            child: RaisedButton(
+                              onPressed: () {},
+                              child: Text('Delete'),
+                              color: Color(0xFFc8262c),
+                              textColor: Colors.white,
+                            ),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0)),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              decoration: BoxDecoration(
+                color: Theme.of(context).canvasColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(40),
+                  topRight: const Radius.circular(40),
+                ),
               ),
             ),
-          ),
-        );
-      },
-    );
+          );
+        });
   }
 
   @override
