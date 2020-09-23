@@ -10,36 +10,34 @@ class FavoriteIntraBankBeneficiary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets\\images\\peoples-bank.png',
-                fit: BoxFit.cover,
-                height: 30,
-                width: 100,
-              )
-            ],
-          ),
-          elevation: 0,
-          actions: [
-            Container(
-              margin: EdgeInsets.only(right: 15),
-              child: Row(
-                children: [
-                  Icon(Icons.notifications_none),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(Icons.access_time),
-                ],
-              ),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets\\images\\peoples-bank.png',
+              fit: BoxFit.cover,
+              height: 30,
+              width: 100,
             )
-          ]),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Container(
+          ],
+        ),
+        elevation: 0,
+        actions: [
+          Container(
+            margin: EdgeInsets.only(right: 15),
+            child: Row(
+              children: [
+                Icon(Icons.notifications_none),
+                SizedBox(
+                  width: 10,
+                ),
+                Icon(Icons.access_time),
+              ],
+            ),
+          )
+        ],
+        bottom: PreferredSize(
+            child: Container(
               width: double.infinity,
               padding: EdgeInsets.all(10),
               child: Column(
@@ -59,6 +57,31 @@ class FavoriteIntraBankBeneficiary extends StatelessWidget {
                 color: Color(0xFF424242),
               ),
             ),
+            preferredSize: Size.fromHeight(50.0)),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            // Container(
+            //   width: double.infinity,
+            //   padding: EdgeInsets.all(10),
+            //   child: Column(
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: <Widget>[
+            //       Text(
+            //         'Favorite Beneficiary Fund Transfer',
+            //         style: TextStyle(color: Colors.white, fontSize: 15.0),
+            //       ),
+            //       Text(
+            //         'Transfer fund to Favorite Beneficiaries',
+            //         style: TextStyle(color: Colors.white54, fontSize: 11.0),
+            //       ),
+            //     ],
+            //   ),
+            //   decoration: BoxDecoration(
+            //     color: Color(0xFF424242),
+            //   ),
+            // ),
             Padding(
               padding: EdgeInsets.fromLTRB(
                   MediaQuery.of(context).size.width / 15,
@@ -99,6 +122,7 @@ class MyCustomFormState extends State<MyCustomForm> {
       TextEditingController();
   final noteController = TextEditingController();
   TextEditingController fromAccountController = TextEditingController();
+  TextEditingController toAccountBranchController = TextEditingController();
 
   String selectedValue;
   String selectedFromAccNum;
@@ -111,6 +135,8 @@ class MyCustomFormState extends State<MyCustomForm> {
     transferAmountController.dispose();
     beneficiaryContactNumController.dispose();
     noteController.dispose();
+    fromAccountController.dispose();
+    toAccountBranchController.dispose();
     super.dispose();
   }
 
@@ -123,8 +149,10 @@ class MyCustomFormState extends State<MyCustomForm> {
     beneficiaryNameController = TextEditingController(text: args.name);
     beneficiaryContactNumController = TextEditingController(text: args.contact);
     beneficiaryImageController = TextEditingController(text: args.image);
-    fromAccountController = TextEditingController(text: FromAccountNumberService.accNumbers[0]);
-
+    // fromAccountController =
+    //     TextEditingController(text: FromAccountNumberService.accNumbers[0]);
+    toAccountBranchController =
+        TextEditingController(text: args.branch.split(" - ")[1]);
 
     return Form(
       key: _formKey,
@@ -141,7 +169,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                   radius: MediaQuery.of(context).size.height * 0.075,
                 ),
               )),
-//----------------------------------------------------------------------------//
 //----------------------------------------------------------------------------//
           Padding(
             padding: EdgeInsets.fromLTRB(
@@ -162,7 +189,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                       FocusScope.of(context).nextFocus();
                     },
                     decoration: InputDecoration(
-                        labelText: "From Account Numebr",
+                        labelText: "From Account Number",
                         hintText: '783522398924',
                         prefixIcon: Icon(Icons.account_balance),
                         border: OutlineInputBorder(
@@ -203,7 +230,71 @@ class MyCustomFormState extends State<MyCustomForm> {
               ],
             ),
           ),
+
+          //----------------------------------------------------------------------------//
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                0, 0, 0, MediaQuery.of(context).size.height / 40),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(
+                          0, 0, 0, MediaQuery.of(context).size.height / 120),
+                    ),
+                  ],
+                ),
+                TypeAheadFormField(
+                  textFieldConfiguration: TextFieldConfiguration(
+                    enabled: false,
+                    onEditingComplete: () {
+                      FocusScope.of(context).nextFocus();
+                    },
+                    decoration: InputDecoration(
+                        labelText: "To Account\'s Branch",
+                        hintText: 'Akkaraipattu',
+                        prefixIcon: Icon(Icons.account_balance),
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(5))),
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: MediaQuery.of(context).size.height / 50,
+                            horizontal:
+                                MediaQuery.of(context).size.width / 25)),
+                    controller: this.toAccountBranchController,
+                  ),
+                  suggestionsCallback: (pattern) {
+                    return BankBranchNameService.getSuggestions(pattern);
+                  },
+                  itemBuilder: (context, suggestion) {
+                    return SingleChildScrollView(
+                      child: ListTile(
+                        title: Text(suggestion),
+                      ),
+                    );
+                  },
+                  transitionBuilder:
+                      (context, suggestionsBox, animationController) =>
+                          FadeTransition(
+                    child: suggestionsBox,
+                    opacity: CurvedAnimation(
+                        parent: animationController,
+                        curve: Curves.fastOutSlowIn),
+                  ),
+                  onSuggestionSelected: (suggestion) {
+                    this.toAccountBranchController.text = suggestion;
+                  },
+                  validator: (value) => value.isEmpty
+                      ? 'Please enter To account\'s branch!'
+                      : null,
+                  onSaved: (value) => this.selectedFromAccNum = value,
+                ),
+              ],
+            ),
+          ),
 //----------------------------------------------------------------------------//
+
           Padding(
             padding: EdgeInsets.fromLTRB(
                 0, 0, 0, MediaQuery.of(context).size.height / 40),
@@ -218,6 +309,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   ],
                 ),
                 TextFormField(
+                  enabled: false,
                   onEditingComplete: () {
                     FocusScope.of(context).nextFocus();
                   },
@@ -225,7 +317,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   controller: toAccNumController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                      labelText: "To Account Numebr",
+                      labelText: "To Account Number",
                       hintText: '783522398924',
                       prefixIcon: Icon(Icons.account_balance),
                       border: OutlineInputBorder(
@@ -259,6 +351,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   ],
                 ),
                 TextFormField(
+                  enabled: false,
                   onEditingComplete: () {
                     FocusScope.of(context).nextFocus();
                   },
@@ -345,6 +438,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   ],
                 ),
                 TextFormField(
+                  enabled: false,
                   onEditingComplete: () {
                     FocusScope.of(context).nextFocus();
                   },
@@ -585,6 +679,8 @@ class MyCustomFormState extends State<MyCustomForm> {
                     beneficiaryContactNumController.text = '';
                     transferAmountController.text = '';
                     noteController.text = '';
+                    fromAccountController.text = '';
+                    toAccountBranchController.text = '';
                   }
                 },
                 child: Container(
