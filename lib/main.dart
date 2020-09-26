@@ -9,8 +9,9 @@ import 'screens/Tabs_screen.dart';
 import './screens/Payment_List_screen.dart';
 import './screens/Test_screen.dart';
 import './screens/AddFavouritePayment.dart';
+import './screens/Home_screen.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:flutter/services.dart' ;
+import 'package:flutter/services.dart';
 
 import 'screens/Update_favorite_beneficiary.dart';
 
@@ -37,8 +38,8 @@ class _MyHomePageState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
-        DeviceOrientation.portraitUp,
-      ]);
+      DeviceOrientation.portraitUp,
+    ]);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Peoples Redde App',
@@ -68,6 +69,7 @@ class _MyHomePageState extends State<MyApp> {
         AddFavoriteBeneficiary.routeName: (context) => AddFavoriteBeneficiary(),
         UpdateFavoriteBeneficiary.routeName: (context) =>
             UpdateFavoriteBeneficiary(),
+        HomeScreen.routeName: (context) => HomeScreen(),
       },
     );
   }

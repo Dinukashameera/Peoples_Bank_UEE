@@ -3,6 +3,7 @@ import './Favourites_screen.dart';
 import './Transfer_screen.dart';
 import './Settings_screen.dart';
 import './Bills_screen.dart';
+import './Home_screen.dart';
 import '../widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -11,12 +12,13 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
     BillsScreen(),
     TransferScreen(),
+    HomeScreen(),
     FavouriteScreen(),
     SettingsScreen(),
   ];
@@ -64,8 +66,12 @@ class _TabsScreenState extends State<TabsScreen> {
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
+                icon: Icon(Icons.credit_card),
+                title: Text('Billers'),
+              ),
+              BottomNavigationBarItem(
                 icon: Icon(Icons.send),
-                title: Text('Transfers'),
+                title: Text('Transfer'),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
@@ -73,11 +79,11 @@ class _TabsScreenState extends State<TabsScreen> {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.favorite_border,),
-                title: Text('Home'),
+                title: Text('Favourite'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.favorite),
-                title: Text('Favourite' ),
+                icon: Icon(Icons.settings),
+                title: Text('Setting' ),
               ),
              
             ],

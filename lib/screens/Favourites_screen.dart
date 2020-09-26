@@ -4,6 +4,7 @@ import '../screens/Fund_transfer_screen.dart';
 
 class FavouriteScreen extends StatefulWidget {
   static const routeName = '/favorites';
+ 
   @override
   _FavouriteScreenState createState() => _FavouriteScreenState();
 }
