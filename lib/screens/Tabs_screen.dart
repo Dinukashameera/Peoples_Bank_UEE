@@ -3,22 +3,24 @@ import './Favourites_screen.dart';
 import './Transfer_screen.dart';
 import './Settings_screen.dart';
 import './Bills_screen.dart';
+import './Home_screen.dart';
 import '../widgets/main_drawer.dart';
-
+import '../widgets/appBarActions.dart';
 class TabsScreen extends StatefulWidget {
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   List<Widget> _widgetOptions = <Widget>[
-    TransferScreen(),
-    SettingsScreen(),
     BillsScreen(),
+    TransferScreen(),
+    HomeScreen(),
     FavouriteScreen(),
+    SettingsScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -43,17 +45,8 @@ class _TabsScreenState extends State<TabsScreen> {
               ],
             ),
             elevation: 0,
-            actions: [
-              Container(
-                margin: EdgeInsets.only(right: 15),
-                child: Row(
-                  children: [
-                    Icon(Icons.notifications_none),
-                    SizedBox(width: 10,),
-                    Icon(Icons.access_time),
-                  ],
-                ),
-              )
+            actions: [AppBarActions()
+              
             ]),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
@@ -64,20 +57,24 @@ class _TabsScreenState extends State<TabsScreen> {
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                title: Text('Biller'),
+                icon: Icon(Icons.credit_card),
+                title: Text('Billers'),
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.send),
-                title: Text('Transfers'),
+                title: Text('Transfer'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border,),
+                icon: Icon(Icons.home),
                 title: Text('Home'),
               ),
               BottomNavigationBarItem(
+                icon: Icon(Icons.favorite_border,),
+                title: Text('Favourite'),
+              ),
+              BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
-                title: Text('Favourite' ),
+                title: Text('Setting' ),
               ),
              
             ],
