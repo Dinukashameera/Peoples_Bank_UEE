@@ -10,6 +10,7 @@ import './screens/Payment_List_screen.dart';
 import './screens/Test_screen.dart';
 import './screens/AddFavouritePayment.dart';
 import './screens/Home_screen.dart';
+import './screens/History_screen.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/services.dart';
 
@@ -70,6 +71,7 @@ class _MyHomePageState extends State<MyApp> {
         UpdateFavoriteBeneficiary.routeName: (context) =>
             UpdateFavoriteBeneficiary(),
         HomeScreen.routeName: (context) => HomeScreen(),
+        HistoryScreen.routeName:(context) => HistoryScreen()
       },
     );
   }

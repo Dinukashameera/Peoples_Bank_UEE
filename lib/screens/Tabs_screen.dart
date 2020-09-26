@@ -5,7 +5,7 @@ import './Settings_screen.dart';
 import './Bills_screen.dart';
 import './Home_screen.dart';
 import '../widgets/main_drawer.dart';
-
+import '../widgets/appBarActions.dart';
 class TabsScreen extends StatefulWidget {
   @override
   _TabsScreenState createState() => _TabsScreenState();
@@ -45,17 +45,8 @@ class _TabsScreenState extends State<TabsScreen> {
               ],
             ),
             elevation: 0,
-            actions: [
-              Container(
-                margin: EdgeInsets.only(right: 15),
-                child: Row(
-                  children: [
-                    Icon(Icons.notifications_none),
-                    SizedBox(width: 10,),
-                    Icon(Icons.access_time),
-                  ],
-                ),
-              )
+            actions: [AppBarActions()
+              
             ]),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../widgets//paymentSummary.dart';
 import 'package:intl/intl.dart';
+import '../widgets/appBarActions.dart';
+
 
 class AddFavouritePayment extends StatefulWidget {
   static final routeName = '/addPayment';
@@ -77,20 +79,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
             ],
           ),
           elevation: 0,
-          actions: [
-            Container(
-              margin: EdgeInsets.only(right: 15),
-              child: Row(
-                children: [
-                  Icon(Icons.notifications_none),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(Icons.access_time),
-                ],
-              ),
-            )
-          ]),
+          actions: [AppBarActions()]),
       body: SingleChildScrollView(
               child: Container(
           child: Column(
