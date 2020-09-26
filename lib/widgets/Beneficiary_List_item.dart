@@ -2,15 +2,26 @@ import 'package:flutter/material.dart';
 
 class BeneficiaryListItem extends StatelessWidget {
   // final String username;
+  final String id;
   final String account;
   final String branch;
   final String name;
   final String image;
   final String intraORinter;
   final String contact;
+  final List favouriteBeneficiaryList;
+  final dynamic refreshMeth;
 
-  BeneficiaryListItem(this.name, this.account, this.branch, this.image,
-      this.intraORinter, this.contact);
+  BeneficiaryListItem(
+      this.id,
+      this.name,
+      this.account,
+      this.branch,
+      this.image,
+      this.intraORinter,
+      this.contact,
+      this.favouriteBeneficiaryList,
+      this.refreshMeth);
 
   @override
   Widget build(BuildContext context) {
@@ -113,6 +124,18 @@ class BeneficiaryListItem extends StatelessWidget {
                   onTap: () {
                     Navigator.pop(context);
 
+                    List newList = favouriteBeneficiaryList.map((item) {
+                      if (item['id'] != id) {
+                        return item;
+                      }
+                    }).toList();
+
+                    newList.remove(null);
+
+                    print(newList);
+
+                    refreshMeth(newList);
+
                     Scaffold.of(context).showSnackBar(
                         SnackBar(content: Text('Beneficiary Deleted!')));
                   },
@@ -174,16 +197,33 @@ class BeneficiaryListItem extends StatelessWidget {
       onTap: () {
         if (this.intraORinter == 'intra') {
           Navigator.pushNamed(context, "/favoriteIntraBankBeneficiary",
-              arguments: BeneficiaryListItem(this.name, this.account,
-                  this.branch, this.image, this.intraORinter, this.contact));
+              arguments: BeneficiaryListItem(
+                  this.id,
+                  this.name,
+                  this.account,
+                  this.branch,
+                  this.image,
+                  this.intraORinter,
+                  this.contact,
+                  this.favouriteBeneficiaryList,
+                  this.refreshMeth));
         } else if (this.intraORinter == 'inter') {
           Navigator.pushNamed(context, "/favoriteInterBankBeneficiary",
-              arguments: BeneficiaryListItem(this.name, this.account,
-                  this.branch, this.image, this.intraORinter, this.contact));
+              arguments: BeneficiaryListItem(
+                  this.id,
+                  this.name,
+                  this.account,
+                  this.branch,
+                  this.image,
+                  this.intraORinter,
+                  this.contact,
+                  this.favouriteBeneficiaryList,
+                  this.refreshMeth));
         }
       },
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 8),
+        padding: EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).size.height * 0.01),
         child: ListTile(
           leading: CircleAvatar(
             backgroundColor: Colors.white,
@@ -217,22 +257,35 @@ class BeneficiaryListItem extends StatelessWidget {
                   child: GestureDetector(
                 child: Text('Update'),
                 onTap: () {
+
                   Navigator.pop(context);
+
                   Navigator.pushNamed(context, "/updateBeneficiary",
                       arguments: BeneficiaryListItem(
+                          this.id,
                           this.name,
                           this.account,
                           this.branch,
                           this.image,
                           this.intraORinter,
-                          this.contact));
+                          this.contact,
+                          this.favouriteBeneficiaryList,
+                          this.refreshMeth));
+
+                          
                 },
+
+
               )),
+
+
+
               PopupMenuItem(
                   child: GestureDetector(
                 child: Text('Delete'),
                 onTap: () {
                   Navigator.pop(context);
+
                   _onButtonPressed();
                 },
               )),

@@ -1,10 +1,17 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:peoples_bank/dummy_data/Data.dart';
 
-class AddFavoriteBeneficiary extends StatelessWidget {
+class AddFavoriteBeneficiary extends StatefulWidget {
   static const routeName = '/addBeneficiary';
 
+  @override
+  _AddFavoriteBeneficiaryState createState() => _AddFavoriteBeneficiaryState();
+}
+
+class _AddFavoriteBeneficiaryState extends State<AddFavoriteBeneficiary> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -138,6 +145,13 @@ class MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     // Build a Form widget using the _formKey created above.
+
+    final List args = ModalRoute.of(context).settings.arguments;
+    final List list = args[0];
+    final dynamic refresh = args[1];
+
+    // final newBeneficiary = Beneficiary();
+
     return Form(
       key: _formKey,
       child: Column(
@@ -208,7 +222,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     },
                     decoration: InputDecoration(
                         labelText: "Bank",
-                        hintText: 'Amana Bank',
+                        hintText: 'People\'s Bank',
                         prefixIcon: Icon(Icons.account_balance),
                         border: OutlineInputBorder(
                             borderRadius:
@@ -220,7 +234,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     controller: this.beneficiaryBankController,
                   ),
                   suggestionsCallback: (pattern) {
-                    return BankNamesService.getSuggestions(pattern);
+                    return BankNamesServiceTwo.getSuggestions(pattern);
                   },
                   itemBuilder: (context, suggestion) {
                     return SingleChildScrollView(
@@ -401,7 +415,38 @@ class MyCustomFormState extends State<MyCustomForm> {
             child: RaisedButton(
               onPressed: () {
                 if (_formKey.currentState.validate()) {
-                  // _onButtonPressed();
+                  Random random = new Random();
+
+                  String randomID = random.nextInt(999999).toString();
+
+                  String image =
+                      'https://ui-avatars.com/api/?size=128&rounded=true&background=4caf50&color=fff&name=' +
+                          beneficiaryNameController.text.split(" ")[0] +
+                          '+' +
+                          beneficiaryNameController.text.split(" ")[1] +
+                          '';
+                  String intraORinter =
+                      beneficiaryBankController.text == 'People\'s Bank'
+                          ? 'intra'
+                          : 'inter';
+
+                  final newBeneficiary = {
+                    "id": randomID,
+                    "name": beneficiaryNameController.text,
+                    "account": accNumController.text,
+                    "branch": beneficiaryBankController.text +
+                        ' - ' +
+                        beneficiaryBranchController.text,
+                    "image": image,
+                    "intraORinter": intraORinter,
+                    "contact": beneficiaryContactNumberController.text,
+                  };
+
+                  list.add(newBeneficiary);
+
+                  var newList = [...list];
+                  refresh(newList);
+
                   Scaffold.of(context).showSnackBar(SnackBar(
                     content: Text('Beneficiary is added!'),
                     duration: Duration(seconds: 2),

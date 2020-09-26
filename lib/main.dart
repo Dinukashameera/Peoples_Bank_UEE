@@ -2,12 +2,17 @@ import 'package:flutter/material.dart';
 import './screens/Favourites_screen.dart';
 import './screens/Transfer_Screen.dart';
 import './screens/Settings_screen.dart';
+import 'screens/Add_favorite_beneficiary.dart';
+import 'screens/Favorite_inter_bank_beneficiary.dart';
+import 'screens/Favorite_intra_bank_beneficiary.dart';
 import 'screens/Tabs_screen.dart';
 import './screens/Payment_List_screen.dart';
 import './screens/Test_screen.dart';
 import './screens/AddFavouritePayment.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/services.dart' ;
+
+import 'screens/Update_favorite_beneficiary.dart';
 
 void main() {
   runApp(MyApp());
@@ -55,7 +60,14 @@ class _MyHomePageState extends State<MyApp> {
         SettingsScreen.routeName: (context) => SettingsScreen(),
         TestScreen.routeName: (context) => TestScreen(),
         PaymentListScreen.routeName: (context) => PaymentListScreen(),
-        AddFavouritePayment.routeName: (context) => AddFavouritePayment()
+        AddFavouritePayment.routeName: (context) => AddFavouritePayment(),
+        FavoriteIntraBankBeneficiary.routeName: (context) =>
+            FavoriteIntraBankBeneficiary(),
+        FavoriteInterBankBeneficiary.routeName: (context) =>
+            FavoriteInterBankBeneficiary(),
+        AddFavoriteBeneficiary.routeName: (context) => AddFavoriteBeneficiary(),
+        UpdateFavoriteBeneficiary.routeName: (context) =>
+            UpdateFavoriteBeneficiary(),
       },
     );
   }
