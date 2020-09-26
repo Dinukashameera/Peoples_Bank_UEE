@@ -74,6 +74,32 @@ class BankNamesService {
   }
 }
 
+class BankNamesServiceTwo {
+  static final List<String> bankNames = [
+    'People\'s Bank',
+    'Amana Bank',
+    'Bank of Ceylon',
+    'Commercial Bank',
+    'DFCC Bank PLC',
+    'Hatton National Bank',
+    'HSBC Bank',
+    'National Development Bank',
+    'Nations Trust Bank PLC',
+    'Pan Asia Banking Corporation',
+    'Sampath Bank PLC',
+    'Seylan Bank PLC',
+    'Union Bank of Colombo PLC',
+  ];
+
+  static List<String> getSuggestions(String query) {
+    List<String> matches = List();
+    matches.addAll(bankNames);
+
+    matches.retainWhere((s) => s.toLowerCase().contains(query.toLowerCase()));
+    return matches;
+  }
+}
+
 class BankBranchNameService {
   static final List<String> branchNames = [
     'Akkaraipattu',
