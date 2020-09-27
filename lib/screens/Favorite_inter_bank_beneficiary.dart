@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:peoples_bank/dummy_data/Data.dart';
 import 'package:peoples_bank/widgets/Beneficiary_List_item.dart';
+import 'package:peoples_bank/widgets/appBarActions.dart';
 
 class FavoriteInterBankBeneficiary extends StatelessWidget {
   static const routeName = '/favoriteInterBankBeneficiary';
@@ -22,20 +23,7 @@ class FavoriteInterBankBeneficiary extends StatelessWidget {
           ],
         ),
         elevation: 0,
-        actions: [
-          Container(
-            margin: EdgeInsets.only(right: 15),
-            child: Row(
-              children: [
-                Icon(Icons.notifications_none),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(Icons.access_time),
-              ],
-            ),
-          )
-        ],
+        actions: [AppBarActions()],
         bottom: PreferredSize(
             child: Container(
               width: double.infinity,

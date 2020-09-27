@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:peoples_bank/dummy_data/Data.dart';
+import 'package:peoples_bank/widgets/appBarActions.dart';
 
 class AddFavoriteBeneficiary extends StatefulWidget {
   static const routeName = '/addBeneficiary';
@@ -28,20 +29,7 @@ class _AddFavoriteBeneficiaryState extends State<AddFavoriteBeneficiary> {
           ],
         ),
         elevation: 0,
-        actions: [
-          Container(
-            margin: EdgeInsets.only(right: 15),
-            child: Row(
-              children: [
-                Icon(Icons.notifications_none),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(Icons.access_time),
-              ],
-            ),
-          )
-        ],
+        actions: [AppBarActions()],
         bottom: PreferredSize(
             child: Container(
               width: double.infinity,
