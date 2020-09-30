@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import '../screens/Settings_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(IconData icon, String title, Function tapHandler) {
@@ -46,7 +47,10 @@ class MainDrawer extends StatelessWidget {
             //navigate when code eka gahapan
             //naviagte.pushName
           }),
-          buildListTile(Icons.settings, "Methanata items dapan", () {}),
+          buildListTile(Icons.settings, "Settings", () {
+            Navigator.pushNamed(context, '/settings');
+            // SettingsScreen();
+          }),
           buildListTile(Icons.payment, "Methanata items dapan", () {}),
           buildListTile(Icons.blur_circular, "Methanata items dapan", () {}),
         ],
