@@ -25,10 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void login() {
     // final FormState form = formkey.currentState;
     if (formkey.currentState.validate()) {
-      print("test pass ");
       Navigator.pushNamed(context, '/tabs_screen');
-    } else {
-      print('Form is invalid');
     }
   }
 
@@ -41,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
             // key: formkey,
             child: Form(
                 key: formkey,
-                autovalidate: true,
+                // autovalidate: true,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
@@ -60,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Padding(
                       padding: EdgeInsets.only(top: 20.0),
                       child: TextFormField(
-                        // obscureText: true,
+                        obscureText: true,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
                             labelText: "Password"),

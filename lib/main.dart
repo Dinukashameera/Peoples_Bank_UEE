@@ -14,7 +14,7 @@ import './screens/Home_screen.dart';
 import './screens/History_screen.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/services.dart';
-// import 'screens/Login_Screen.dart';
+import 'screens/Login_Screen.dart';
 import './screens/Change_password_screen.dart';
 import './screens/Device_management_screen.dart';
 
@@ -54,7 +54,7 @@ class _MyHomePageState extends State<MyApp> {
       ),
       home: AnimatedSplashScreen(
         splash: Image.asset('assets\\images\\peoples-bank.png'),
-        nextScreen: TabsScreen(), //LoginScreen()
+        nextScreen: LoginScreen(), //LoginScreen()
         splashTransition: SplashTransition.fadeTransition,
         backgroundColor: Colors.black,
         duration: 3500,
