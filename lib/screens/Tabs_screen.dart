@@ -6,7 +6,9 @@ import './Bills_screen.dart';
 import './Home_screen.dart';
 import '../widgets/main_drawer.dart';
 import '../widgets/appBarActions.dart';
+
 class TabsScreen extends StatefulWidget {
+  static const routeName = '/tabs_screen';
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
@@ -45,15 +47,15 @@ class _TabsScreenState extends State<TabsScreen> {
               ],
             ),
             elevation: 0,
-            actions: [AppBarActions()
-              
-            ]),
+            actions: [AppBarActions()]),
         body: Center(
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         drawer: MainDrawer(),
         bottomNavigationBar: Theme(
-          data: Theme.of(context).copyWith(canvasColor: Color(0xFF212121),),
+          data: Theme.of(context).copyWith(
+            canvasColor: Color(0xFF212121),
+          ),
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
@@ -69,19 +71,19 @@ class _TabsScreenState extends State<TabsScreen> {
                 title: Text('Home'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.favorite_border,),
+                icon: Icon(
+                  Icons.favorite_border,
+                ),
                 title: Text('Favourite'),
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                title: Text('Setting' ),
-              ),
-             
+              // BottomNavigationBarItem(
+              //   icon: Icon(Icons.settings),
+              //   title: Text('Setting'),
+              // ),
             ],
             currentIndex: _selectedIndex,
             type: BottomNavigationBarType.fixed,
             selectedItemColor: Color(0xFFfbb418),
-            
             backgroundColor: Color(0xFF212121),
             unselectedItemColor: Colors.white,
             onTap: _onItemTapped,
