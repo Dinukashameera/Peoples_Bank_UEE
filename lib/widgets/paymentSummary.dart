@@ -7,7 +7,7 @@ class PaymentSummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(children: <Widget>[
-        Text(details['type']),
+        Text('methanin wadinne'),
         Text(details['account']),
         Text(details['amount']),
         Text(details['date']),
