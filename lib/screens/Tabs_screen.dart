@@ -6,6 +6,7 @@ import './Bills_screen.dart';
 import './Home_screen.dart';
 import '../widgets/main_drawer.dart';
 import '../widgets/appBarActions.dart';
+import '../custom_icons_icons.dart';
 
 class TabsScreen extends StatefulWidget {
   static const routeName = '/tabs_screen';
@@ -63,7 +64,7 @@ class _TabsScreenState extends State<TabsScreen> {
                 title: Text('Billers'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.send),
+                icon: Icon(CustomIcons.paper_plane),
                 title: Text('Transfer'),
               ),
               BottomNavigationBarItem(
