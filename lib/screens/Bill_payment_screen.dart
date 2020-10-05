@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import '../widgets/favourite_bill_payment_avatar.dart';
+import '../custom_icons_icons.dart';
 
 class BillPaymentScreen extends StatelessWidget {
   final paymentCategories = [
-    {'icon': Icons.phone, 'title': 'Communication'},
+    {'icon': CustomIcons.phone_handset, 'title': 'Communication'},
     {'icon': Icons.lock_outline, 'title': 'Insurance'},
-    {'icon': Icons.build, 'title': 'Utilities'},
-    {'icon': Icons.book, 'title': 'Education'},
-    {'icon': Icons.attach_money, 'title': 'Finance'},
-    {'icon': Icons.favorite_border, 'title': 'Charity'},
+    {'icon': CustomIcons.wrench, 'title': 'Utilities'},
+    {'icon': CustomIcons.book, 'title': 'Education'},
+    {'icon': CustomIcons.money, 'title': 'Finance'},
+    {'icon': CustomIcons.heartbeat, 'title': 'Charity'},
   ];
 
   @override
