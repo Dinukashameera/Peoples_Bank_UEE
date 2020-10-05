@@ -62,12 +62,16 @@ class MainDrawer extends StatelessWidget {
             height: 20,
           ),
           buildListTile(Icons.person, "My Profile", () {}),
-          buildListTile(Icons.settings, "Settings", () {}),
+          buildListTile(Icons.settings, "Settings", () {
+            Navigator.pushNamed(context, '/settings');
+          }),
           buildListTile(Icons.format_list_bulleted, "Orders", () {}),
           Expanded(
             child: Align(
               alignment: Alignment.bottomLeft,
-              child: buildListTile(Icons.keyboard_backspace, "Log Out", () {}),
+              child: buildListTile(Icons.keyboard_backspace, "Log Out", () {
+                Navigator.pushNamed(context, '/main_login');
+              }),
             ),
           )
         ],

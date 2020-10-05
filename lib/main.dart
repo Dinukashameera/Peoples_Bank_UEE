@@ -17,6 +17,7 @@ import 'package:flutter/services.dart';
 import 'screens/Login_Screen.dart';
 import './screens/Change_password_screen.dart';
 import './screens/Device_management_screen.dart';
+// import './screens/Pin_login_screen.dart';
 
 import 'screens/Update_favorite_beneficiary.dart';
 
@@ -61,6 +62,8 @@ class _MyHomePageState extends State<MyApp> {
       ),
       initialRoute: '/',
       routes: {
+        // PinLoginScreen.routeName: (context) => PinLoginScreen(),
+        LoginScreen.routeName: (context) => LoginScreen(),
         DeviceManagement.routeName: (context) => DeviceManagement(),
         ChangePassword.routeName: (context) => ChangePassword(),
         TabsScreen.routeName: (context) => TabsScreen(),

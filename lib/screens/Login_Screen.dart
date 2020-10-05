@@ -3,6 +3,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 // import './Tabs_screen.dart';
 
 class LoginScreen extends StatefulWidget {
+  static const routeName = '/main_login';
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -40,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 key: formkey,
                 // autovalidate: true,
                 child: SingleChildScrollView(
-                                  child: Column(
+                  child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Padding(
@@ -63,12 +64,14 @@ class _LoginScreenState extends State<LoginScreen> {
                               border: OutlineInputBorder(),
                               labelText: "Password"),
                           validator: MultiValidator([
-                            RequiredValidator(errorText: 'password is required'),
+                            RequiredValidator(
+                                errorText: 'password is required'),
                             MinLengthValidator(5,
                                 errorText:
                                     'password must be at least 5 digits long'),
                             MaxLengthValidator(8,
-                                errorText: 'this should not exceed 8 charactors'),
+                                errorText:
+                                    'this should not exceed 8 charactors'),
                             PatternValidator(r'(?=.*?[#?!@$%^&*-])',
                                 errorText:
                                     'passwords must have at least one special character')
@@ -80,16 +83,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: EdgeInsets.only(top: 21.0),
                         child: Text(
                           "Forget Password?",
-                          style:
-                              TextStyle(color: Colors.grey[400].withOpacity(0.8)),
+                          style: TextStyle(
+                              color: Colors.grey[400].withOpacity(0.8)),
                         ),
                       ),
                       Padding(
                         padding: EdgeInsets.only(top: 16.0),
                         child: Text(
                           "Online Registration",
-                          style:
-                              TextStyle(color: Colors.grey[400].withOpacity(0.8)),
+                          style: TextStyle(
+                              color: Colors.grey[400].withOpacity(0.8)),
                         ),
                       ),
                       Padding(
