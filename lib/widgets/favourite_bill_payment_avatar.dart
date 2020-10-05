@@ -18,6 +18,7 @@ class FavouriteBillPaymentAvatar extends StatelessWidget {
       height: 100,
       width: 100,
       child: Column(
+
         children: <Widget>[
           GestureDetector(
             onTap: () {
@@ -53,7 +54,7 @@ class FavouriteBillPaymentAvatar extends StatelessWidget {
             fit: BoxFit.contain,
             child: Text(
               '$text',
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
             ),
           )
         ],

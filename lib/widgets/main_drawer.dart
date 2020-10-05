@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// import '../screens/Settings_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(IconData icon, String title, Function tapHandler) {
@@ -26,29 +27,49 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Container(
-            height: 85,
-            width: double.infinity,
-            padding: EdgeInsets.all(20),
-            alignment: Alignment.centerLeft,
-            color: Colors.amber[800],
-            child: Text(
-              'Mokak hari magulak',
-              style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 15,
-                  color: Theme.of(context).primaryColor),
-            ),
-          ),
+              height: 200,
+              width: double.infinity,
+              padding: EdgeInsets.all(20),
+              alignment: Alignment.centerLeft,
+              color: Colors.black,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.center,
+                    child: CircleAvatar(
+                      backgroundImage:
+                          AssetImage('assets\\images\\peoples-bank.png'),
+                      radius: 45.0,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    'John Doe',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600, color: Colors.white),
+                  ),
+                  Text(
+                    'johndoe@gmail.com',
+                    style: TextStyle(fontSize: 10, color: Colors.white),
+                  )
+                ],
+              )),
           SizedBox(
             height: 20,
           ),
-          buildListTile(Icons.favorite, "Test Route", () {
-            //navigate when code eka gahapan
-            //naviagte.pushName
-          }),
-          buildListTile(Icons.settings, "Methanata items dapan", () {}),
-          buildListTile(Icons.payment, "Methanata items dapan", () {}),
-          buildListTile(Icons.blur_circular, "Methanata items dapan", () {}),
+          buildListTile(Icons.person, "My Profile", () {}),
+          buildListTile(Icons.settings, "Settings", () {}),
+          buildListTile(Icons.format_list_bulleted, "Orders", () {}),
+          Expanded(
+            child: Align(
+              alignment: Alignment.bottomLeft,
+              child: buildListTile(Icons.keyboard_backspace, "Log Out", () {}),
+            ),
+          )
         ],
       ),
     );
