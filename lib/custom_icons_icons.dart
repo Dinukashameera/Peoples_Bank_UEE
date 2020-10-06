@@ -33,7 +33,7 @@ class CustomIcons {
   static const _kFontFam = 'CustomIcons';
   static const _kFontPkg = null;
 
- static const IconData bell = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+   static const IconData bell = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData book = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData wrench = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData keyboard = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -43,6 +43,7 @@ class CustomIcons {
   static const IconData money = IconData(0xf0d6, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData building_filled = IconData(0xf1ad, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData paper_plane = IconData(0xf1d8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData paper_plane_empty = IconData(0xf1d9, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData heartbeat = IconData(0xf21e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData money_bill_alt = IconData(0xf3d1, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

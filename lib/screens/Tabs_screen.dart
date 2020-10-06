@@ -64,7 +64,7 @@ class _TabsScreenState extends State<TabsScreen> {
                 title: Text('Billers'),
               ),
               BottomNavigationBarItem(
-                icon: Icon(CustomIcons.paper_plane),
+                icon: Icon(CustomIcons.paper_plane_empty),
                 title: Text('Transfer'),
               ),
               BottomNavigationBarItem(
