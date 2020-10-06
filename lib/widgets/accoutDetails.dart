@@ -16,17 +16,46 @@ class _AccountDetailsState extends State<AccountDetails> {
         Container(
           height: 70,
           width: double.infinity,
-          color: Colors.amber,
+          color: Color(0xFF424242),
           child: Column(
             children: <Widget>[
-              Text('Available balance'),
-              Text('3456698979'),
+              Container(
+                margin: EdgeInsets.only(top: 3),
+                child: Text(
+                  'Available balance',
+                  style: TextStyle(color: Color(0xFFbdbdbd)),
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                     margin: EdgeInsets.only(right: 4,left: 15,top: 5 ),
+                    child: Text(
+                      '346,340.00',
+                      style: TextStyle(color: Colors.white, fontSize: 25),
+                    ),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 12 ),
+                      child: Text(
+                    'LKR',
+                    style: TextStyle(color: Colors.white, fontSize: 10),
+                  )),
+                ],
+              )
             ],
           ),
         ),
         Container(
-            padding: EdgeInsets.only(left: 10),
-            child: Text('Saving Account Details', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),)),
+            padding: EdgeInsets.only(left: 15),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical:8.0,),
+              child: Text(
+                'Saving Account Details',
+                style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
+              ),
+            )),
         AccountDetailsItems('Account Number', '078-2-300-0-346534'),
         AccountDetailsItems('Account Branch', 'Malabe'),
         AccountDetailsItems('Account Status', 'Active'),

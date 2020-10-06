@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peoples_bank/custom_icons_icons.dart';
 import '../widgets/frequent_transaction_item.dart';
 import '../widgets/accoutDetails.dart';
 
@@ -14,6 +15,40 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool collapse = true;
+
+  final List frequesntTransactions = [
+    {
+      "name": "Amila Senavirathne",
+      "account": "056-6598-15154-552",
+      "bank": "People's Bank",
+      "trailing": CustomIcons.paper_plane_empty
+    },
+    {
+      "name": "Kavindu Tharaka",
+      "account": "056-6598-15154-552",
+      "bank": "People's Bank",
+      "trailing": CustomIcons.paper_plane_empty
+    },
+    {
+      "name": "Chamod Rathnayake",
+      "account": "056-6598-15154-552",
+      "bank": "People's Bank",
+      "trailing": CustomIcons.paper_plane_empty
+    },
+    {
+      "name": "Dinuka Perera",
+      "account": "056-6598-15154-552",
+      "bank": "People's Bank",
+      "trailing": CustomIcons.paper_plane_empty
+    },
+    {
+      "name": "Amila Senavirathne",
+      "account": "056-6598-15154-552",
+      "bank": "People's Bank",
+      "trailing": CustomIcons.paper_plane_empty
+    },
+  ];
+
   @override
   Widget build(BuildContext context) {
     if (collapse) {
@@ -96,24 +131,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            Text('Frequent transaction'),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0, left: 15),
+              child: Text(
+                'Frequent Transactions',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
             SizedBox(
               height: 10,
             ),
             Expanded(
               child: ListView(
-                children: <Widget>[
-                  FrequentTransactionItem(),
-                  FrequentTransactionItem(),
-                  FrequentTransactionItem(),
-                  FrequentTransactionItem(),
-                  FrequentTransactionItem(),
-                  FrequentTransactionItem(),
-                  FrequentTransactionItem(),
-                  FrequentTransactionItem(),
-                  FrequentTransactionItem(),
-                  FrequentTransactionItem(),
-                ],
+                children: frequesntTransactions
+                    .map((trnx) => FrequentTransactionItem(trnx['name'],trnx['account'],trnx['bank'],trnx['trailing']))
+                    .toList(),
               ),
             ),
           ],
@@ -124,7 +156,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: AccountDetails(),
         floatingActionButton: FloatingActionButton(
           child: Icon(
-            Icons.add,
+            CustomIcons.share,
             color: Colors.white,
           ),
           onPressed: () {},

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:peoples_bank/custom_icons_icons.dart';
 import '../widgets/appBarActions.dart';
 import './History_All_screen.dart';
 import './History_Bill_Payment.dart';
 import './History_Fund_Transfer.dart';
+import '../custom_icons_icons.dart';
 
 class HistoryScreen extends StatefulWidget {
   static final routeName = '/history';
@@ -12,48 +14,60 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-  final List<Map<String,String>> historyPayment = [
+  final List historyPayment = [
     {
       "amount": "LKR 3400.00",
       "date": "12-05-2020",
       "ref": "098-323-4342-323",
       "method": "CASA ATM FSCASH (Nov)",
-      "type": "credit"
+      "type": "credit",
+      "icon": CustomIcons.minus_squared,
+      "trailing": "2020-07-20"
     },
     {
       "amount": "LKR 3400.00",
       "date": "12-05-2020",
       "ref": "098-323-4342-323",
       "method": "CASA ATM FSCASH (Nov)",
-      "type": "credit"
+       "type": "credit",
+      "icon": CustomIcons.minus_squared,
+      "trailing": "2020-07-20"
     },
     {
       "amount": "LKR 540.00",
       "date": "12-05-2020",
       "ref": "098-323-4342-323",
       "method": "CASA ATM FSCASH (Nov)",
-      "type": "credit"
+      "type": "credit",
+      "icon": CustomIcons.minus_squared,
+      "trailing": "2020-07-20"
     },
     {
       "amount": "LKR 5740.00",
       "date": "12-05-2020",
       "ref": "098-323-4342-323",
       "method": "CASA ATM FSCASH (Nov)",
-      "type": "debit"
+      "type": "debit",
+      "icon": CustomIcons.plus_squared,
+      "trailing": "2020-07-20"
     },
     {
       "amount": "LKR 6700.00",
       "date": "12-05-2020",
       "ref": "098-323-4342-323",
       "method": "CASA ATM FSCASH (Nov)",
-      "type": "debit"
+      "type": "debit",
+      "icon": CustomIcons.plus_squared,
+      "trailing": "2020-07-20"
     },
     {
       "amount": "LKR 40.00",
       "date": "12-05-2020",
       "ref": "098-323-4342-323",
       "method": "CASA ATM FSCASH (Nov)",
-      "type": "credit"
+      "type": "credit",
+      "icon": CustomIcons.minus_squared,
+      "trailing": "2020-07-20"
     }
   ];
 
@@ -97,11 +111,19 @@ class _HistoryScreenState extends State<HistoryScreen> {
             body: TabBarView(
               children: [
                 HistoryAll(historyPayment),
-                HistoryFundTransfer(),
-                HistoryBillPayment()
+                HistoryFundTransfer(historyPayment),
+                HistoryBillPayment(historyPayment)
               ],
             ),
           )),
+          floatingActionButton: FloatingActionButton(
+          child: Icon(
+            Icons.search,
+            color: Colors.white,
+          ),
+          onPressed: () {},
+          backgroundColor: Color(0xFFC8262C),
+        )
     );
   }
 }
