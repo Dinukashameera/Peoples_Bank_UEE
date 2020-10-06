@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peoples_bank/custom_icons_icons.dart';
 import './Favourites_screen.dart';
 import './Transfer_screen.dart';
 import './Settings_screen.dart';
@@ -63,7 +64,7 @@ class _TabsScreenState extends State<TabsScreen> {
               title: Text('Billers'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.send),
+              icon: Icon(CustomIcons.paper_plane_empty),
               title: Text('Transfer'),
             ),
             BottomNavigationBarItem(
