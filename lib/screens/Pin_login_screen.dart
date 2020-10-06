@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
+class PinLogin extends StatefulWidget {
+  static const routeName = '/pin_login';
   @override
-  LoginState createState() => LoginState();
+  PinLoginState createState() => PinLoginState();
 }
 
-class LoginState extends State<Login> {
+class PinLoginState extends State<PinLogin> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -19,8 +20,8 @@ class LoginState extends State<Login> {
   }
 }
 
+//try to separate
 class PinLoginScreen extends StatefulWidget {
-  static const routeName = '/pin_login';
   @override
   _PinLoginScreenState createState() => _PinLoginScreenState();
 }
@@ -44,7 +45,7 @@ class _PinLoginScreenState extends State<PinLoginScreen> {
     return SafeArea(
       child: Column(
         children: <Widget>[
-          buildExitButton(),
+          // buildExitButton(),
           Expanded(
             child: Container(
               alignment: Alignment(0, 0.5),
@@ -53,7 +54,7 @@ class _PinLoginScreenState extends State<PinLoginScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   buildSecurityText(),
-                  // SizedBox(height: 40.0),
+                  SizedBox(height: 40.0),
                   buildPinROw()
                 ],
               ),
@@ -66,123 +67,121 @@ class _PinLoginScreenState extends State<PinLoginScreen> {
   }
 
   buildNumberPad() {
-    return SingleChildScrollView(
-      child: Expanded(
-          child: Container(
-        alignment: Alignment.bottomCenter,
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 32),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  KeyBoardNumber(
-                    n: 1,
-                    onPressed: () {
-                      pinIndexSetup("1");
-                    },
-                  ),
-                  KeyBoardNumber(
-                    n: 2,
-                    onPressed: () {
-                      pinIndexSetup("2");
-                    },
-                  ),
-                  KeyBoardNumber(
-                    n: 3,
-                    onPressed: () {
-                      pinIndexSetup("3");
-                    },
-                  ),
-                ],
-              ), //first row
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  KeyBoardNumber(
-                    n: 4,
-                    onPressed: () {
-                      pinIndexSetup("4");
-                    },
-                  ),
-                  KeyBoardNumber(
-                    n: 5,
-                    onPressed: () {
-                      pinIndexSetup("5");
-                    },
-                  ),
-                  KeyBoardNumber(
-                    n: 6,
-                    onPressed: () {
-                      pinIndexSetup("6");
-                    },
-                  ),
-                ],
-              ), //second row
+    return Expanded(
+        child: Container(
+      alignment: Alignment.bottomCenter,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 32),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                KeyBoardNumber(
+                  n: 1,
+                  onPressed: () {
+                    pinIndexSetup("1");
+                  },
+                ),
+                KeyBoardNumber(
+                  n: 2,
+                  onPressed: () {
+                    pinIndexSetup("2");
+                  },
+                ),
+                KeyBoardNumber(
+                  n: 3,
+                  onPressed: () {
+                    pinIndexSetup("3");
+                  },
+                ),
+              ],
+            ), //first row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                KeyBoardNumber(
+                  n: 4,
+                  onPressed: () {
+                    pinIndexSetup("4");
+                  },
+                ),
+                KeyBoardNumber(
+                  n: 5,
+                  onPressed: () {
+                    pinIndexSetup("5");
+                  },
+                ),
+                KeyBoardNumber(
+                  n: 6,
+                  onPressed: () {
+                    pinIndexSetup("6");
+                  },
+                ),
+              ],
+            ), //second row
 
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  KeyBoardNumber(
-                    n: 7,
-                    onPressed: () {
-                      pinIndexSetup("7");
-                    },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                KeyBoardNumber(
+                  n: 7,
+                  onPressed: () {
+                    pinIndexSetup("7");
+                  },
+                ),
+                KeyBoardNumber(
+                  n: 8,
+                  onPressed: () {
+                    pinIndexSetup("8");
+                  },
+                ),
+                KeyBoardNumber(
+                  n: 9,
+                  onPressed: () {
+                    pinIndexSetup("9");
+                  },
+                ),
+              ],
+            ),
+            //third row
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Container(
+                  width: 60.0,
+                  child: MaterialButton(
+                    onPressed: null,
+                    child: SizedBox(),
                   ),
-                  KeyBoardNumber(
-                    n: 8,
-                    onPressed: () {
-                      pinIndexSetup("8");
-                    },
-                  ),
-                  KeyBoardNumber(
-                    n: 9,
-                    onPressed: () {
-                      pinIndexSetup("9");
-                    },
-                  ),
-                ],
-              ),
-              //third row
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Container(
-                    width: 60.0,
-                    child: MaterialButton(
-                      onPressed: null,
-                      // child: SizedBox(),
-                    ),
-                  ),
-                  KeyBoardNumber(
-                    n: 0,
-                    onPressed: () {
-                      pinIndexSetup("0");
-                    },
-                  ),
-                  Container(
-                    width: 60.0,
-                    child: MaterialButton(
-                        height: 60.0,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(60.0)),
-                        onPressed: () {
-                          clearPin();
-                        },
-                        child: Icon(
-                          Icons.backspace,
-                          color: Colors.white,
-                        )),
-                  )
-                ],
-              ), //last
-            ],
-          ),
+                ),
+                KeyBoardNumber(
+                  n: 0,
+                  onPressed: () {
+                    pinIndexSetup("0");
+                  },
+                ),
+                Container(
+                  width: 60.0,
+                  child: MaterialButton(
+                      height: 60.0,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(60.0)),
+                      onPressed: () {
+                        clearPin();
+                      },
+                      child: Icon(
+                        Icons.backspace,
+                        color: Colors.white,
+                      )),
+                )
+              ],
+            ), //last
+          ],
         ),
-      )),
-    );
+      ),
+    ));
   }
 
   clearPin() {
@@ -216,7 +215,7 @@ class _PinLoginScreenState extends State<PinLoginScreen> {
 
       if (pinIndex == 4) {
         print('Entered Valu is: $strPin');
-        Navigator.pushNamed(context, '/second');
+        Navigator.pushNamed(context, '/tabs_screen');
       }
     }
   }
@@ -242,24 +241,22 @@ class _PinLoginScreenState extends State<PinLoginScreen> {
   }
 
   buildPinROw() {
-    return SingleChildScrollView(
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            PINNumber(
-                outlineInputBorder: outlineInputBorder,
-                textEditingController: pinOneController),
-            PINNumber(
-                outlineInputBorder: outlineInputBorder,
-                textEditingController: pinTwoController),
-            PINNumber(
-                outlineInputBorder: outlineInputBorder,
-                textEditingController: pinThreeController),
-            PINNumber(
-                outlineInputBorder: outlineInputBorder,
-                textEditingController: pinFourController),
-          ]),
-    );
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          PINNumber(
+              outlineInputBorder: outlineInputBorder,
+              textEditingController: pinOneController),
+          PINNumber(
+              outlineInputBorder: outlineInputBorder,
+              textEditingController: pinTwoController),
+          PINNumber(
+              outlineInputBorder: outlineInputBorder,
+              textEditingController: pinThreeController),
+          PINNumber(
+              outlineInputBorder: outlineInputBorder,
+              textEditingController: pinFourController),
+        ]);
   }
 
   buildSecurityText() {

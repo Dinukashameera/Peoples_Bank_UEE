@@ -66,15 +66,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           validator: MultiValidator([
                             RequiredValidator(
                                 errorText: 'password is required'),
-                            MinLengthValidator(5,
-                                errorText:
-                                    'password must be at least 5 digits long'),
-                            MaxLengthValidator(8,
-                                errorText:
-                                    'this should not exceed 8 charactors'),
+                            MinLengthValidator(5, errorText: 'wrong password'),
+                            MaxLengthValidator(8, errorText: 'wrong password'),
                             PatternValidator(r'(?=.*?[#?!@$%^&*-])',
-                                errorText:
-                                    'passwords must have at least one special character')
+                                errorText: 'something\'s missing!')
                           ]),
                         ),
                       ),
