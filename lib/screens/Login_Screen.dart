@@ -49,7 +49,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Image.asset('assets\\images\\peoples-bank.png'),
                       ), //image
                       TextFormField(
+                        keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
+                          
                             border: OutlineInputBorder(), labelText: "Email"),
                         validator: MultiValidator([
                           RequiredValidator(errorText: "Email is required!"),
