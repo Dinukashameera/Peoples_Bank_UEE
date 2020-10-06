@@ -33,67 +33,63 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-        onWillPop: () async {
-          Navigator.pushNamed(context, '/pin_login');
-          return true;
-        },
-        child: Scaffold(
-          appBar: AppBar(
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets\\images\\peoples-bank.png',
-                    fit: BoxFit.cover,
-                    height: 30,
-                    width: 100,
-                  )
-                ],
+    return Scaffold(
+      appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(
+                'assets\\images\\peoples-bank.png',
+                fit: BoxFit.cover,
+                height: 30,
+                width: 100,
+              )
+            ],
+          ),
+          elevation: 0,
+          actions: [AppBarActions()]),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      drawer: MainDrawer(),
+      bottomNavigationBar: Theme(
+        data: Theme.of(context).copyWith(
+          canvasColor: Color(0xFF212121),
+        ),
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.credit_card),
+              title: Text('Billers'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.send),
+              title: Text('Transfer'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.favorite_border,
               ),
-              elevation: 0,
-              actions: [AppBarActions()]),
-          body: Center(
-            child: _widgetOptions.elementAt(_selectedIndex),
-          ),
-          drawer: MainDrawer(),
-          bottomNavigationBar: Theme(
-            data: Theme.of(context).copyWith(
-              canvasColor: Color(0xFF212121),
+              title: Text('Favourite'),
             ),
-            child: BottomNavigationBar(
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.credit_card),
-                  title: Text('Billers'),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.send),
-                  title: Text('Transfer'),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  title: Text('Home'),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(
-                    Icons.favorite_border,
-                  ),
-                  title: Text('Favourite'),
-                ),
-                // BottomNavigationBarItem(
-                //   icon: Icon(Icons.settings),
-                //   title: Text('Setting'),
-                // ),
-              ],
-              currentIndex: _selectedIndex,
-              type: BottomNavigationBarType.fixed,
-              selectedItemColor: Color(0xFFfbb418),
-              backgroundColor: Color(0xFF212121),
-              unselectedItemColor: Colors.white,
-              onTap: _onItemTapped,
-            ),
-          ),
-        ));
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.settings),
+            //   title: Text('Setting'),
+            // ),
+          ],
+          currentIndex: _selectedIndex,
+          type: BottomNavigationBarType.fixed,
+          selectedItemColor: Color(0xFFfbb418),
+          backgroundColor: Color(0xFF212121),
+          unselectedItemColor: Colors.white,
+          onTap: _onItemTapped,
+        ),
+      ),
+      // )
+    );
   }
 }
