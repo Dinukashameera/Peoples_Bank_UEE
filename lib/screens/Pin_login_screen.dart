@@ -7,12 +7,14 @@ class PinLogin extends StatefulWidget {
 }
 
 class PinLoginState extends State<PinLogin> {
+  final primaeyColor = const Color(0xffb74093);
+  final accentColor = const Color(0xFFfbb418);
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.deepPurpleAccent, Colors.deepPurple],
+                colors: [Colors.black, Colors.black],
                 begin: Alignment.topRight)),
         child: PinLoginScreen(),
       ),
@@ -53,6 +55,10 @@ class _PinLoginScreenState extends State<PinLoginScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 90.0),
+                    child: Image.asset('assets\\images\\peoples-bank.png'),
+                  ),
                   buildSecurityText(),
                   SizedBox(height: 40.0),
                   buildPinROw()
@@ -326,7 +332,9 @@ class KeyBoardNumber extends StatelessWidget {
       width: 60.0,
       height: 60.0,
       decoration: BoxDecoration(
-          shape: BoxShape.circle, color: Colors.purpleAccent.withOpacity(0.1)),
+          shape: BoxShape.circle,
+          color: Colors.grey[300]
+              .withOpacity(0.1)), //Colors.purpleAccent.withOpacity(0.1)
       alignment: Alignment.center,
       child: MaterialButton(
         padding: EdgeInsets.all(.0),
@@ -347,14 +355,14 @@ class KeyBoardNumber extends StatelessWidget {
 }
 
 //second screen
-class SecondScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Second Screen"),
-      ),
-      body: Center(child: Text("Home Page")),
-    );
-  }
-}
+// class SecondScreen extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Second Screen"),
+//       ),
+//       body: Center(child: Text("Home Page")),
+//     );
+//   }
+// }

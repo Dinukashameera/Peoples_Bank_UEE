@@ -59,9 +59,8 @@ class _MyHomePageState extends State<MyApp> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    print('APP STATUS:  $state');
     if (state == AppLifecycleState.resumed) {
-      print("RESUMED  RESUMED   RESUMED  RESUMED  RESUMED  RESUMED");
+      globals.isLoggedIn = false;
       navigatorKey.currentState.pushNamed('/pin_login');
     }
   }
@@ -81,8 +80,7 @@ class _MyHomePageState extends State<MyApp> with WidgetsBindingObserver {
       ),
       home: AnimatedSplashScreen(
         splash: Image.asset('assets\\images\\peoples-bank.png'),
-        nextScreen:
-            globals.isLoggedIn ? LoginScreen() : PinLogin(), //LoginScreen()
+        nextScreen: globals.isLoggedIn ? LoginScreen() : PinLogin(),
         splashTransition: SplashTransition.fadeTransition,
         backgroundColor: Colors.black,
         duration: 3500,
