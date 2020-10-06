@@ -17,8 +17,10 @@ import 'package:flutter/services.dart';
 import 'screens/Login_Screen.dart';
 import './screens/Change_password_screen.dart';
 import './screens/Device_management_screen.dart';
-
+import './screens/Pin_login_screen.dart';
 import 'screens/Update_favorite_beneficiary.dart';
+
+import 'globals.dart' as globals;
 
 void main() {
   runApp(MyApp());
@@ -39,13 +41,37 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyApp> {
+class _MyHomePageState extends State<MyApp> with WidgetsBindingObserver {
+// with WidgetsBindingObserver
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+    if (state == AppLifecycleState.resumed) {
+      globals.isLoggedIn = false;
+      navigatorKey.currentState.pushNamed('/pin_login');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
     return MaterialApp(
+      navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Peoples Redde App',
       theme: ThemeData(
@@ -54,13 +80,15 @@ class _MyHomePageState extends State<MyApp> {
       ),
       home: AnimatedSplashScreen(
         splash: Image.asset('assets\\images\\peoples-bank.png'),
-        nextScreen: LoginScreen(), //LoginScreen()
+        nextScreen: globals.isLoggedIn ? LoginScreen() : PinLogin(),
         splashTransition: SplashTransition.fadeTransition,
         backgroundColor: Colors.black,
         duration: 3500,
       ),
       initialRoute: '/',
       routes: {
+        PinLogin.routeName: (context) => PinLogin(),
+        LoginScreen.routeName: (context) => LoginScreen(),
         DeviceManagement.routeName: (context) => DeviceManagement(),
         ChangePassword.routeName: (context) => ChangePassword(),
         TabsScreen.routeName: (context) => TabsScreen(),
