@@ -45,4 +45,5 @@ class CustomIcons {
   static const IconData paper_plane = IconData(0xf1d8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData heartbeat = IconData(0xf21e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData money_bill_alt = IconData(0xf3d1, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData money_bill_wave = IconData(0xf53a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
