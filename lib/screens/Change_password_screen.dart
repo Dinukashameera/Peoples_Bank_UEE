@@ -151,7 +151,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                         labelText: "Old Password",
-                        prefixIcon: Icon(Icons.account_balance),
+                        prefixIcon: Icon(Icons.keyboard),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -190,8 +190,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                         labelText: "New Password",
-                        // hintText: 'Amal Udayakantha',
-                        prefixIcon: Icon(Icons.person),
+                        prefixIcon: Icon(Icons.vpn_key),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -236,7 +235,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                         labelText: "Re-enter Password",
-                        prefixIcon: Icon(Icons.attach_money),
+                        prefixIcon: Icon(Icons.vpn_key),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
