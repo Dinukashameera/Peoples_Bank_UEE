@@ -60,7 +60,7 @@ class _TabsScreenState extends State<TabsScreen> {
         child: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.credit_card),
+              icon: Icon(CustomIcons.newspaper),
               title: Text('Billers'),
             ),
             BottomNavigationBarItem(

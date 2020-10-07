@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import './account_details_items.dart';
 
 class AccountDetails extends StatefulWidget {
+  Function collapse;
+  AccountDetails(this.collapse);
+
   @override
   _AccountDetailsState createState() => _AccountDetailsState();
 }
@@ -14,7 +17,7 @@ class _AccountDetailsState extends State<AccountDetails> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-          height: 70,
+          height: 90,
           width: double.infinity,
           color: Color(0xFF424242),
           child: Column(
@@ -30,27 +33,42 @@ class _AccountDetailsState extends State<AccountDetails> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Container(
-                     margin: EdgeInsets.only(right: 4,left: 15,top: 5 ),
+                    margin: EdgeInsets.only(right: 4, left: 15, top: 5),
                     child: Text(
                       '346,340.00',
                       style: TextStyle(color: Colors.white, fontSize: 25),
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.only(top: 12 ),
+                      margin: EdgeInsets.only(top: 12),
                       child: Text(
-                    'LKR',
-                    style: TextStyle(color: Colors.white, fontSize: 10),
-                  )),
+                        'LKR',
+                        style: TextStyle(color: Colors.white, fontSize: 10),
+                      )),
                 ],
-              )
+              ),
+              Container(
+                padding: EdgeInsets.all(10),
+                child: GestureDetector(
+                  onTap: widget.collapse,
+                  child: Text(
+                    'Show Less',
+                    style: TextStyle(
+                        fontSize: 10,
+                        color: Color(0xFFbdbdbd),
+                        decoration: TextDecoration.underline),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
         Container(
             padding: EdgeInsets.only(left: 15),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical:8.0,),
+              padding: const EdgeInsets.symmetric(
+                vertical: 8.0,
+              ),
               child: Text(
                 'Saving Account Details',
                 style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18),
