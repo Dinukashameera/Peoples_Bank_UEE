@@ -33,16 +33,21 @@ class CustomIcons {
   static const _kFontFam = 'CustomIcons';
   static const _kFontPkg = null;
 
- static const IconData bell = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData bell = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData book = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData wrench = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData keyboard = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData user = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData newspaper = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData phone_handset = IconData(0xe830, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData share = IconData(0xf064, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData key = IconData(0xf084, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData money = IconData(0xf0d6, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData plus_squared = IconData(0xf0fe, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData minus_squared = IconData(0xf146, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData building_filled = IconData(0xf1ad, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData paper_plane = IconData(0xf1d8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData paper_plane_empty = IconData(0xf1d9, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData heartbeat = IconData(0xf21e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData money_bill_alt = IconData(0xf3d1, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData money_bill_wave = IconData(0xf53a, fontFamily: _kFontFam, fontPackage: _kFontPkg);

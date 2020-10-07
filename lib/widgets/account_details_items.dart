@@ -9,12 +9,12 @@ class AccountDetailsItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 10),
+      padding: EdgeInsets.only(left: 15),
       margin: EdgeInsets.only(top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(title ),
+          Text(title , style: TextStyle(color: Color(0xFF616161)),),
           Text(subtitle),
         ],
       ),
