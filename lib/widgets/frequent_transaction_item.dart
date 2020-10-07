@@ -6,8 +6,9 @@ class FrequentTransactionItem extends StatelessWidget {
   final String account;
   final String bank;
   final IconData trailing;
+  final String image;
 
-  FrequentTransactionItem(this.name, this.account, this.bank, this.trailing);
+  FrequentTransactionItem(this.name, this.account, this.bank, this.trailing,this.image);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class FrequentTransactionItem extends StatelessWidget {
         margin: EdgeInsets.all(5.0),
         child: ListTile(
           contentPadding: EdgeInsets.all(10),
-          leading: Text('leading'),
+          leading: CircleAvatar(child: Image.network(image),),
           title: Text(
             name,
             style: TextStyle(
@@ -33,7 +34,7 @@ class FrequentTransactionItem extends StatelessWidget {
               Text(bank, style: TextStyle(fontSize: 12),),
             ],
           ),
-          trailing: Icon(trailing),
+          trailing: Icon(trailing,size: 20,),
         ),
       ),
     );

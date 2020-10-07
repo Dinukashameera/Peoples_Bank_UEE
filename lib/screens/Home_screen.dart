@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:peoples_bank/custom_icons_icons.dart';
 import '../widgets/frequent_transaction_item.dart';
 import '../widgets/accoutDetails.dart';
+import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   static final routeName = '/home';
@@ -16,38 +17,78 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool collapse = true;
 
-  final List frequesntTransactions = [
+  final List<Map<dynamic,dynamic>> frequesntTransactions = [
     {
+      
       "name": "Amila Senavirathne",
       "account": "056-6598-15154-552",
       "bank": "People's Bank",
-      "trailing": CustomIcons.paper_plane_empty
+      "trailing": CustomIcons.paper_plane_empty,
+      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=4caf50&color=fff&name=Am+Se"
     },
     {
       "name": "Kavindu Tharaka",
       "account": "056-6598-15154-552",
       "bank": "People's Bank",
-      "trailing": CustomIcons.paper_plane_empty
+      "trailing": CustomIcons.paper_plane_empty,
+       "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=00bcd4&color=fff&name=Ka+Th"
     },
     {
       "name": "Chamod Rathnayake",
       "account": "056-6598-15154-552",
       "bank": "People's Bank",
-      "trailing": CustomIcons.paper_plane_empty
+      "trailing": CustomIcons.paper_plane_empty,
+       "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=f44336&color=fff&name=Ch+Ra"
     },
     {
       "name": "Dinuka Perera",
       "account": "056-6598-15154-552",
       "bank": "People's Bank",
-      "trailing": CustomIcons.paper_plane_empty
+      "trailing": CustomIcons.paper_plane_empty,
+       "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=607d8b&color=fff&name=Di+Pe"
     },
     {
       "name": "Amila Senavirathne",
       "account": "056-6598-15154-552",
       "bank": "People's Bank",
-      "trailing": CustomIcons.paper_plane_empty
+      "trailing": CustomIcons.newspaper,
+       "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=8bc34a&color=fff&name=Am+Se"
     },
   ];
+
+  // @override
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  //   print('did init call');
+  //   addAvatar();
+  // }
+
+  // void addAvatar() async {
+  //   try {
+  //     const url = 'https://ui-avatars.com/api/?name=Elon+Musk';
+
+  //     setState(() {
+  //       frequesntTransactions.map((trnx) => {
+  //         trnx['leading'] = "hello"
+
+  //     });
+
+  //     });
+  //     print(frequesntTransactions);
+
+  //     var response = await http.get(url);
+  //     print(response);
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  // }
+
+  void collapseWindow() {
+    setState(() {
+      collapse = !collapse;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,9 +135,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         '3456,6789.00',
                         style: TextStyle(fontSize: 38, color: Colors.white),
                       ),
-                      Text(
-                        'LKR',
-                        style: TextStyle(fontSize: 10, color: Colors.white),
+                      Container(
+                        margin: EdgeInsets.only(top: 15, left: 4),
+                        child: Text(
+                          'LKR',
+                          style: TextStyle(fontSize: 10, color: Colors.white),
+                        ),
                       ),
                     ],
                   ),
@@ -114,18 +158,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        collapse = false;
-                      });
-                    },
-                    child: Text(
-                      'Account Details',
-                      style: TextStyle(
-                          fontSize: 10,
-                          color: Color(0xFFbdbdbd),
-                          decoration: TextDecoration.underline),
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    child: GestureDetector(
+                      onTap: collapseWindow,
+                      child: Text(
+                        'Account Details',
+                        style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFFbdbdbd),
+                            decoration: TextDecoration.underline),
+                      ),
                     ),
                   ),
                 ],
@@ -144,7 +187,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: ListView(
                 children: frequesntTransactions
-                    .map((trnx) => FrequentTransactionItem(trnx['name'],trnx['account'],trnx['bank'],trnx['trailing']))
+                    .map((trnx) => FrequentTransactionItem(trnx['name'],
+                        trnx['account'], trnx['bank'], trnx['trailing'], trnx['image']))
                     .toList(),
               ),
             ),
@@ -153,7 +197,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
     } else {
       return Scaffold(
-        body: AccountDetails(),
+        body: AccountDetails(collapseWindow),
         floatingActionButton: FloatingActionButton(
           child: Icon(
             CustomIcons.share,
