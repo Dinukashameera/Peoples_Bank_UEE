@@ -56,12 +56,12 @@ class _PinLoginScreenState extends State<PinLoginScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.symmetric(vertical: 90.0),
+                    padding: EdgeInsets.symmetric(vertical: 50.0),
                     child: Image.asset('assets\\images\\peoples-bank.png'),
                   ),
                   buildSecurityText(),
-                  SizedBox(height: 40.0),
-                  buildPinROw()
+                  SizedBox(height: MediaQuery.of(context).size.height / 50),
+                  buildPinROw(),
                 ],
               ),
             ),
@@ -77,7 +77,7 @@ class _PinLoginScreenState extends State<PinLoginScreen> {
         child: Container(
       alignment: Alignment.bottomCenter,
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 32),
+        padding: const EdgeInsets.only(bottom: 16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
@@ -171,7 +171,7 @@ class _PinLoginScreenState extends State<PinLoginScreen> {
                 Container(
                   width: 60.0,
                   child: MaterialButton(
-                      height: 60.0,
+                      height: MediaQuery.of(context).size.height / 20,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(60.0)),
                       onPressed: () {
@@ -341,7 +341,7 @@ class KeyBoardNumber extends StatelessWidget {
         onPressed: onPressed,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(60.0)),
-        height: 90.0,
+        height: 80.0,
         child: Text("$n",
             textAlign: TextAlign.center,
             style: TextStyle(
