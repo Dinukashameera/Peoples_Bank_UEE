@@ -1,7 +1,5 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
-// import '../screens/Settings_screen.dart';
+import 'package:peoples_bank/custom_icons_icons.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(IconData icon, String title, Function tapHandler,
@@ -87,10 +85,19 @@ class MainDrawer extends StatelessWidget {
               thickness: 0.8,
             ),
             buildListTile(
-                Icons.format_list_bulleted,
-                "Orders",
+                CustomIcons.calculator,
+                "Pension Calculator",
                 () {},
-                'Any payment or bills can be paid automatically as requested',
+                'Free money advice service pension calculator to estimate your retirement income',
+                null),
+            Divider(
+              thickness: 0.8,
+            ),
+            buildListTile(
+                CustomIcons.money_bill_alt,
+                "Pawing service",
+                () {},
+                'we offer you Speedy, reliable and confidential service while giving maximum security',
                 null),
             Divider(
               thickness: 0.8,
