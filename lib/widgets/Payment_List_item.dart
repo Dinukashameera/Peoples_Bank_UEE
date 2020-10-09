@@ -102,7 +102,7 @@ class PaymentListItem extends StatelessWidget {
       child: ListTile(
         leading: CircleAvatar(
           backgroundColor: Colors.white,
-          child: Image.network(image),
+          child: Image.asset(image),
           // Icon(Icons.person_outline)
         ),
         title: Text(type),

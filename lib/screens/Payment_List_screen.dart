@@ -10,31 +10,31 @@ class PaymentListScreen extends StatelessWidget {
       'type': 'SLT 4G Internet',
       'account': '056-856-0-9458625',
       'branch': 'Peoles bank Matara',
-      'image': 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+      'image': 'assets\\images\\SLTLogo-png.png'
     },
     {
       'type': 'SLT Fibre Internet',
       'account': '056-856-0-9458625',
       'branch': 'Peoles bank Matara',
-      'image': 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+      'image': 'assets\\images\\SLTLogo-png.png'
     },
     {
       'type': 'SLT Peo Tv',
       'account': '056-856-0-9458625',
       'branch': 'Peoles bank Kiribathgoda',
-      'image': 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+      'image': 'assets\\images\\SLTLogo-png.png'
     },
     {
       'type': 'SLT Fibre Internet',
       'account': '056-856-0-9458625',
       'branch': 'Peoles bank Kandy',
-      'image': 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+      'image': 'assets\\images\\SLTLogo-png.png'
     },
     {
       'type': 'SLT 4G Internet',
       'account': '056-856-0-9458625',
       'branch': 'Peoles bank Matara',
-      'image': 'https://www.slt.lk/sites/default/files/files/SLTLogo-png.png'
+      'image': 'assets\\images\\SLTLogo-png.png'
     },
   ];
 
