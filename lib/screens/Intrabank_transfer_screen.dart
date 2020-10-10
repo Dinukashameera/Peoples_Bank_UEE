@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:peoples_bank/custom_icons_icons.dart';
 import 'package:peoples_bank/dummy_data/Data.dart';
 
 class IntrabankTransferScreen extends StatelessWidget {
@@ -118,7 +119,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     decoration: InputDecoration(
                         labelText: "From Account Number",
                         hintText: '783522398924',
-                        prefixIcon: Icon(Icons.account_balance),
+                        prefixIcon: Icon(CustomIcons.book),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -241,7 +242,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   decoration: InputDecoration(
                       labelText: "To Account Number",
                       hintText: '783522398924',
-                      prefixIcon: Icon(Icons.account_balance),
+                      prefixIcon: Icon(CustomIcons.book),
                       border: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5))),
