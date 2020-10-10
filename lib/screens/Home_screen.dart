@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     //  crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
                       Text(
-                        '3456,6789.00',
+                        '456,678.00',
                         style: TextStyle(fontSize: 38, color: Colors.white),
                       ),
                       Container(
@@ -165,7 +165,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Text(
                         'Account Details',
                         style: TextStyle(
-                            fontSize: 10,
+                           
                             color: Color(0xFFbdbdbd),
                             decoration: TextDecoration.underline),
                       ),

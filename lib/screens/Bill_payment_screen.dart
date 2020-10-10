@@ -20,7 +20,7 @@ class BillPaymentScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: EdgeInsets.only(left: 20, top: 20, right: 50),
+            margin: EdgeInsets.only(left: 48, top: 20, right: 50),
             decoration: BoxDecoration(
                 color: Colors.white24,
                 borderRadius: BorderRadius.all(Radius.circular(10.0))),
@@ -35,7 +35,7 @@ class BillPaymentScreen extends StatelessWidget {
             ),
           ),
           Container(
-            margin: EdgeInsets.only(left: 27, top: 20),
+            margin: EdgeInsets.only(left: 48, top: 20),
             child: Text(
               'Categories',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),

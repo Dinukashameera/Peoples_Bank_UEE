@@ -258,7 +258,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
     'SLT Router'
   ];
 
-
+  String selectedOption = '';
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -326,7 +326,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                         isExpanded: true,
                         onChanged: (String values) {
                           setState(() {
-                            // selectedUnit = values;
+                            billTypeController.text = values;
                           });
                         },
 

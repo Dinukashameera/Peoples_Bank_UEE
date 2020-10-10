@@ -12,10 +12,10 @@ class FavouriteScreen extends StatefulWidget {
 class _FavouriteScreenState extends State<FavouriteScreen> {
   final tab = TabBar(tabs: <Tab>[
     Tab(
-      child: Text('Fund Transfer'),
+      child: Text('Beneficiaries'),
     ),
     Tab(
-      child: Text('Bill Payment'),
+      child: Text('Bills'),
     ),
   ]);
   @override

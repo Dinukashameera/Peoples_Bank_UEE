@@ -23,7 +23,7 @@ class _TabsScreenState extends State<TabsScreen> {
     TransferScreen(),
     HomeScreen(),
     FavouriteScreen(),
-    SettingsScreen(),
+    BillsScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -76,6 +76,12 @@ class _TabsScreenState extends State<TabsScreen> {
                 Icons.favorite_border,
               ),
               title: Text('Favourite'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.payment,
+              ),
+              title: Text('Cheques'),
             ),
             // BottomNavigationBarItem(
             //   icon: Icon(Icons.settings),
