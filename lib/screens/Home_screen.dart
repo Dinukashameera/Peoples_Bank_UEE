@@ -17,43 +17,100 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool collapse = true;
 
-  final List<Map<dynamic,dynamic>> frequesntTransactions = [
+  // final List frequesntTransactions = [
+  //   {
+  //     "name": "Amila Senavirathne",
+  //     "account": "056-6598-15154-552",
+  //     "bank": "People's Bank",
+  //     "trailing": CustomIcons.paper_plane_empty,
+  //     "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=4caf50&color=fff&name=Am+Se"
+  //   },
+  //   {
+  //     "name": "Kavindu Tharaka",
+  //     "account": "056-6598-15154-552",
+  //     "bank": "People's Bank",
+  //     "trailing": CustomIcons.paper_plane_empty,
+  //      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=00bcd4&color=fff&name=Ka+Th"
+  //   },
+  //   {
+  //     "name": "Chamod Rathnayake",
+  //     "account": "056-6598-15154-552",
+  //     "bank": "People's Bank",
+  //     "trailing": CustomIcons.paper_plane_empty,
+  //      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=f44336&color=fff&name=Ch+Ra"
+  //   },
+  //   {
+  //     "name": "Dinuka Perera",
+  //     "account": "056-6598-15154-552",
+  //     "bank": "People's Bank",
+  //     "trailing": CustomIcons.paper_plane_empty,
+  //      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=607d8b&color=fff&name=Di+Pe"
+  //   },
+  //   {
+  //     "name": "Amila Senavirathne",
+  //     "account": "056-6598-15154-552",
+  //     "bank": "People's Bank",
+  //     "trailing": CustomIcons.paper_plane_empty,
+  //      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=8bc34a&color=fff&name=Am+Se"
+  //   },
+  // ];
+
+  List frequesntTransactions = [
     {
-      
-      "name": "Amila Senavirathne",
-      "account": "056-6598-15154-552",
-      "bank": "People's Bank",
+      'id': '004a',
+      'name': 'Chamod Rathnayake',
+      'account': '845323467834567',
+      'branch': 'Bank of Ceylon - Chilaw',
       "trailing": CustomIcons.paper_plane_empty,
-      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=4caf50&color=fff&name=Am+Se"
+      'image':
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=607d8b&color=fff&name=Ch+Ra',
+      'intraORinter': 'inter',
+      'contact': '0756873214'
     },
     {
-      "name": "Kavindu Tharaka",
-      "account": "056-6598-15154-552",
-      "bank": "People's Bank",
+      'id': '005a',
+      'name': 'Isuru Lakshan',
+      'account': '32197628668642',
+      'branch': 'Bank of Ceylon - Sooriyawewa',
       "trailing": CustomIcons.paper_plane_empty,
-       "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=00bcd4&color=fff&name=Ka+Th"
+      'image':
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=8d64d7&color=fff&name=Is+Lak',
+      'intraORinter': 'inter',
+      'contact': '0778989744'
     },
     {
-      "name": "Chamod Rathnayake",
-      "account": "056-6598-15154-552",
-      "bank": "People's Bank",
+      'id': '001a',
+      'name': 'Amila Senewirathne',
+      'account': '05685609458625',
+      'branch': 'People\'s bank - Matara',
       "trailing": CustomIcons.paper_plane_empty,
-       "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=f44336&color=fff&name=Ch+Ra"
+      'image':
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=4caf50&color=fff&name=Am+Se',
+      'intraORinter': 'intra',
+      'contact': '0712343546'
     },
     {
-      "name": "Dinuka Perera",
-      "account": "056-6598-15154-552",
-      "bank": "People's Bank",
+      'id': '002a',
+      'name': 'Thamal Dilanka',
+      'account': '02197628668642',
+      'branch': 'Sampath Bank - Koswatta',
       "trailing": CustomIcons.paper_plane_empty,
-       "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=607d8b&color=fff&name=Di+Pe"
+      'image':
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=00bcd4&color=fff&name=Th+Dil',
+      'intraORinter': 'inter',
+      'contact': '0717676876'
     },
     {
-      "name": "Amila Senavirathne",
-      "account": "056-6598-15154-552",
-      "bank": "People's Bank",
-      "trailing": CustomIcons.newspaper,
-       "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=8bc34a&color=fff&name=Am+Se"
-    },
+      'id': '003a',
+      'name': 'Kavindu Tharaka',
+      'account': '23534608458688',
+      'branch': 'People\'s bank - Weeraketiya',
+      "trailing": CustomIcons.paper_plane_empty,
+      'image':
+          'https://ui-avatars.com/api/?size=128&rounded=true&background=f44336&color=fff&name=Ka+Th',
+      'intraORinter': 'intra',
+      'contact': '0767362543'
+    }
   ];
 
   // @override
@@ -165,7 +222,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Text(
                         'Account Details',
                         style: TextStyle(
-                           
                             color: Color(0xFFbdbdbd),
                             decoration: TextDecoration.underline),
                       ),
@@ -187,8 +243,16 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: ListView(
                 children: frequesntTransactions
-                    .map((trnx) => FrequentTransactionItem(trnx['name'],
-                        trnx['account'], trnx['bank'], trnx['trailing'], trnx['image']))
+                    .map((trnx) => FrequentTransactionItem(
+                          trnx['name'],
+                          trnx['account'],
+                          trnx['branch'],
+                          trnx['trailing'],
+                          trnx['image'],
+                          trnx['id'],
+                          trnx['intraORinter'],
+                          trnx['contact'],
+                        ))
                     .toList(),
               ),
             ),
