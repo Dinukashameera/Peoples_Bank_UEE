@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
+import 'package:peoples_bank/custom_icons_icons.dart';
 import 'package:peoples_bank/dummy_data/Data.dart';
+import 'package:peoples_bank/custom_icons_icons.dart';
 
 class IntrabankTransferScreen extends StatelessWidget {
   static const routeName = '/intraBankTransfer';
@@ -118,7 +120,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     decoration: InputDecoration(
                         labelText: "From Account Number",
                         hintText: '783522398924',
-                        prefixIcon: Icon(Icons.account_balance),
+                        prefixIcon: Icon(CustomIcons.book),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -210,8 +212,9 @@ class MyCustomFormState extends State<MyCustomForm> {
                   onSuggestionSelected: (suggestion) {
                     this.toAccountBranchController.text = suggestion;
                   },
-                  validator: (value) =>
-                      value.isEmpty ? 'Please enter To account\'s branch!' : null,
+                  validator: (value) => value.isEmpty
+                      ? 'Please enter To account\'s branch!'
+                      : null,
                   onSaved: (value) => this.selectedFromAccNum = value,
                 ),
               ],
@@ -241,7 +244,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   decoration: InputDecoration(
                       labelText: "To Account Number",
                       hintText: '783522398924',
-                      prefixIcon: Icon(Icons.account_balance),
+                      prefixIcon: Icon(CustomIcons.book),
                       border: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5))),
@@ -327,7 +330,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                       labelText: "Transfer Amount",
                       hintText: '12500',
                       prefixText: 'LKR. ',
-                      prefixIcon: Icon(Icons.attach_money),
+                      prefixIcon: Icon(CustomIcons.money),
                       border: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5))),
@@ -601,7 +604,6 @@ class MyCustomFormState extends State<MyCustomForm> {
                     noteController.text = '';
                     fromAccountController.text = '';
                     toAccountBranchController.text = '';
-
                   }
                 },
                 child: Container(

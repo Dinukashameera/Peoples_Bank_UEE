@@ -5,7 +5,7 @@ class BillsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text('Bills Screen'),
+      child: Text('Sample Screen'),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:peoples_bank/dummy_data/Data.dart';
 import 'package:peoples_bank/widgets/Beneficiary_List_item.dart';
+import 'package:peoples_bank/widgets/appBarActions.dart';
+import 'package:peoples_bank/custom_icons_icons.dart';
 
 class FavoriteInterBankBeneficiary extends StatelessWidget {
   static const routeName = '/favoriteInterBankBeneficiary';
@@ -22,20 +24,7 @@ class FavoriteInterBankBeneficiary extends StatelessWidget {
           ],
         ),
         elevation: 0,
-        actions: [
-          Container(
-            margin: EdgeInsets.only(right: 15),
-            child: Row(
-              children: [
-                Icon(Icons.notifications_none),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(Icons.access_time),
-              ],
-            ),
-          )
-        ],
+        actions: [AppBarActions()],
         bottom: PreferredSize(
             child: Container(
               width: double.infinity,
@@ -175,7 +164,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     decoration: InputDecoration(
                         labelText: "From Account Number",
                         hintText: '783522398924',
-                        prefixIcon: Icon(Icons.account_balance),
+                        prefixIcon: Icon(CustomIcons.book),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -297,7 +286,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     decoration: InputDecoration(
                         labelText: "To Account\'s Bank",
                         hintText: 'Amana Bank',
-                        prefixIcon: Icon(Icons.account_balance),
+                        prefixIcon: Icon(CustomIcons.building_filled),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -422,7 +411,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   decoration: InputDecoration(
                       labelText: "To Account Number",
                       hintText: '783522398924',
-                      prefixIcon: Icon(Icons.account_balance),
+                      prefixIcon: Icon(CustomIcons.book),
                       border: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5))),
@@ -509,7 +498,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                       labelText: "Transfer Amount",
                       hintText: '12500',
                       prefixText: 'LKR. ',
-                      prefixIcon: Icon(Icons.attach_money),
+                      prefixIcon: Icon(CustomIcons.money),
                       border: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5))),
