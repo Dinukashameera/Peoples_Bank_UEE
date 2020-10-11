@@ -120,7 +120,7 @@ class MainDrawer extends StatelessWidget {
             Expanded(
               child: Align(
                 alignment: Alignment.bottomLeft,
-                child: buildListTile(Icons.keyboard_backspace, "Log Out", () {
+                child: buildListTile(CustomIcons.login, "Log Out", () {
                   Navigator.pushNamed(context, '/main_login');
                 }, '', null),
               ),
