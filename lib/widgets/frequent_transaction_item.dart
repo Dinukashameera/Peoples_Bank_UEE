@@ -17,38 +17,40 @@ class FrequentTransactionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (this.intraORinter == 'intra') {
-          Navigator.pushNamed(context, "/favoriteIntraBankBeneficiary",
-              arguments: BeneficiaryListItem(
-                  this.id,
-                  this.name,
-                  this.account,
-                  this.branch,
-                  this.image,
-                  this.intraORinter,
-                  this.contact,
-                  null,
-                  null));
-        } else if (this.intraORinter == 'inter') {
-          Navigator.pushNamed(context, "/favoriteInterBankBeneficiary",
-              arguments: BeneficiaryListItem(
-                  this.id,
-                  this.name,
-                  this.account,
-                  this.branch,
-                  this.image,
-                  this.intraORinter,
-                  this.contact,
-                  null,
-                  null));
-        }
-      },
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
-        child: Card(
-          margin: EdgeInsets.all(5.0),
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      child: Card(
+        margin: EdgeInsets.all(5.0),
+        child: InkWell(
+          onTap: () {
+            {
+              if (this.intraORinter == 'intra') {
+                Navigator.pushNamed(context, "/favoriteIntraBankBeneficiary",
+                    arguments: BeneficiaryListItem(
+                        this.id,
+                        this.name,
+                        this.account,
+                        this.branch,
+                        this.image,
+                        this.intraORinter,
+                        this.contact,
+                        null,
+                        null));
+              } else if (this.intraORinter == 'inter') {
+                Navigator.pushNamed(context, "/favoriteInterBankBeneficiary",
+                    arguments: BeneficiaryListItem(
+                        this.id,
+                        this.name,
+                        this.account,
+                        this.branch,
+                        this.image,
+                        this.intraORinter,
+                        this.contact,
+                        null,
+                        null));
+              }
+            }
+          },
           child: ListTile(
             contentPadding: EdgeInsets.all(10),
             leading: CircleAvatar(

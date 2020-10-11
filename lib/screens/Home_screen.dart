@@ -17,44 +17,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool collapse = true;
 
-  // final List frequesntTransactions = [
-  //   {
-  //     "name": "Amila Senavirathne",
-  //     "account": "056-6598-15154-552",
-  //     "bank": "People's Bank",
-  //     "trailing": CustomIcons.paper_plane_empty,
-  //     "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=4caf50&color=fff&name=Am+Se"
-  //   },
-  //   {
-  //     "name": "Kavindu Tharaka",
-  //     "account": "056-6598-15154-552",
-  //     "bank": "People's Bank",
-  //     "trailing": CustomIcons.paper_plane_empty,
-  //      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=00bcd4&color=fff&name=Ka+Th"
-  //   },
-  //   {
-  //     "name": "Chamod Rathnayake",
-  //     "account": "056-6598-15154-552",
-  //     "bank": "People's Bank",
-  //     "trailing": CustomIcons.paper_plane_empty,
-  //      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=f44336&color=fff&name=Ch+Ra"
-  //   },
-  //   {
-  //     "name": "Dinuka Perera",
-  //     "account": "056-6598-15154-552",
-  //     "bank": "People's Bank",
-  //     "trailing": CustomIcons.paper_plane_empty,
-  //      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=607d8b&color=fff&name=Di+Pe"
-  //   },
-  //   {
-  //     "name": "Amila Senavirathne",
-  //     "account": "056-6598-15154-552",
-  //     "bank": "People's Bank",
-  //     "trailing": CustomIcons.paper_plane_empty,
-  //      "image" : "https://ui-avatars.com/api/?size=128&rounded=true&background=8bc34a&color=fff&name=Am+Se"
-  //   },
-  // ];
-
   List frequesntTransactions = [
     {
       'id': '004a',

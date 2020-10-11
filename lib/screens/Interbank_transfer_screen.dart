@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:peoples_bank/dummy_data/Data.dart';
 import 'package:peoples_bank/custom_icons_icons.dart';
+import 'package:peoples_bank/widgets/acknowledgementTransfer.dart';
 
 class InterbankTransferScreen extends StatelessWidget {
   static const routeName = '/interBankTransfer';
@@ -696,10 +697,10 @@ class MyCustomFormState extends State<MyCustomForm> {
                 onTap: () {
                   Navigator.pop(context);
 
-                  Scaffold.of(context).showSnackBar(SnackBar(
-                    content: Text('Transaction is Processing'),
-                    duration: Duration(seconds: 2),
-                  ));
+                  // Scaffold.of(context).showSnackBar(SnackBar(
+                  //   content: Text('Transaction is Processing'),
+                  //   duration: Duration(seconds: 2),
+                  // ));
 
                   if (toAccNumController.text == '123456789') {
                     Scaffold.of(context).showSnackBar(SnackBar(
@@ -710,15 +711,23 @@ class MyCustomFormState extends State<MyCustomForm> {
                           content:
                               Text('Your Account has no sufficient balance!')));
                     }
-                  } else if (transferAmountController.text == '15000') {
+                  } else if (int.parse(transferAmountController.text) > 15000) {
                     Scaffold.of(context).showSnackBar(SnackBar(
                         content:
                             Text('Your Account has no sufficient balance!')));
                   } else {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                      content: Text('Transaction is Successfull!'),
-                      duration: Duration(seconds: 2),
-                    ));
+                    // Scaffold.of(context).showSnackBar(SnackBar(
+                    //   content: Text('Transaction is Successfull!'),
+                    //   duration: Duration(seconds: 2),
+                    // ));
+
+                    Navigator.pushNamed(context, "/acknowledgement",
+                        arguments: AcknowledgementTransfer(
+                            beneficiaryNameController.text,
+                            toAccNumController.text,
+                            toAccountBranchController.text,
+                            toAccountBankController.text,
+                            transferAmountController.text));
 
                     toAccNumController.text = '';
                     beneficiaryNameController.text = '';
