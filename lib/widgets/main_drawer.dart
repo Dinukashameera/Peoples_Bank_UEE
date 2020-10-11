@@ -94,25 +94,7 @@ class MainDrawer extends StatelessWidget {
             Divider(
               thickness: 0.8,
             ),
-            ListTile(
-              leading: Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              title: Text(
-                'Settings',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, '/settings');
-              },
-              subtitle: Text(
-                'Change your privacy settings of this app',
-                style: TextStyle(color: Colors.white54, fontSize: 13),
-              ),
-            ),
+            
             Divider(
               thickness: 0.8,
             ),
@@ -146,6 +128,25 @@ class MainDrawer extends StatelessWidget {
               onTap: () {},
               subtitle: Text(
                 'We offer you Speedy, reliable and confidential service while giving maximum security',
+                style: TextStyle(color: Colors.white54, fontSize: 13),
+              ),
+            ),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Settings',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, '/settings');
+              },
+              subtitle: Text(
+                'Change your privacy settings of this app',
                 style: TextStyle(color: Colors.white54, fontSize: 13),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/History_screen.dart';
+
 class AppBarActions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,9 +12,12 @@ class AppBarActions extends StatelessWidget {
           SizedBox(
             width: 10,
           ),
-          GestureDetector(child: Icon(Icons.access_time), onTap: (){
-            Navigator.of(context).pushNamed(HistoryScreen.routeName);
-          },),
+          GestureDetector(
+            child: Icon(Icons.access_time),
+            onTap: () {
+              Navigator.of(context).pushNamed(HistoryScreen.routeName);
+            },
+          ),
         ],
       ),
     );

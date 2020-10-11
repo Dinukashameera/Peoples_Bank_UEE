@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peoples_bank/screens/Acknowledgement_Screen.dart';
 import 'package:peoples_bank/screens/Tabs_screen.dart';
 import './screens/Favourites_screen.dart';
 import './screens/Transfer_Screen.dart';
@@ -106,7 +107,8 @@ class _MyHomePageState extends State<MyApp> with WidgetsBindingObserver {
         UpdateFavoriteBeneficiary.routeName: (context) =>
             UpdateFavoriteBeneficiary(),
         HomeScreen.routeName: (context) => HomeScreen(),
-        HistoryScreen.routeName: (context) => HistoryScreen()
+        HistoryScreen.routeName: (context) => HistoryScreen(),
+        Acknowledgement.routeName: (context) => Acknowledgement()
       },
     );
   }

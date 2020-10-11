@@ -91,7 +91,7 @@ class BeneficiaryListItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     Navigator.pop(context);
                   },
@@ -120,7 +120,7 @@ class BeneficiaryListItem extends StatelessWidget {
                         borderRadius: BorderRadius.circular(40)),
                   ),
                 ),
-                GestureDetector(
+                InkWell(
                   onTap: () {
                     Navigator.pop(context);
 
@@ -193,7 +193,7 @@ class BeneficiaryListItem extends StatelessWidget {
           });
     }
 
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         if (this.intraORinter == 'intra') {
           Navigator.pushNamed(context, "/favoriteIntraBankBeneficiary",
@@ -254,10 +254,9 @@ class BeneficiaryListItem extends StatelessWidget {
             icon: Icon(Icons.more_vert),
             itemBuilder: (_) => [
               PopupMenuItem(
-                  child: GestureDetector(
+                  child: InkWell(
                 child: Text('Update'),
                 onTap: () {
-
                   Navigator.pop(context);
 
                   Navigator.pushNamed(context, "/updateBeneficiary",
@@ -271,17 +270,10 @@ class BeneficiaryListItem extends StatelessWidget {
                           this.contact,
                           this.favouriteBeneficiaryList,
                           this.refreshMeth));
-
-                          
                 },
-
-
               )),
-
-
-
               PopupMenuItem(
-                  child: GestureDetector(
+                  child: InkWell(
                 child: Text('Delete'),
                 onTap: () {
                   Navigator.pop(context);
