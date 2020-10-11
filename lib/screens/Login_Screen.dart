@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
+import 'package:peoples_bank/custom_icons_icons.dart';
 // import './Tabs_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -51,6 +52,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
                         decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email,  size: 20),
+                          contentPadding: EdgeInsets.symmetric(vertical: 0,horizontal: 10),
                           
                             border: OutlineInputBorder(), labelText: "Email"),
                         validator: MultiValidator([
@@ -63,6 +66,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextFormField(
                           obscureText: true,
                           decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.vpn_key, size: 20,),
+                             contentPadding: EdgeInsets.symmetric(vertical: 0,horizontal: 10),
                               border: OutlineInputBorder(),
                               labelText: "Password"),
                           validator: MultiValidator([

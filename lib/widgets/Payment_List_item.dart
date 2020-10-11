@@ -69,7 +69,9 @@ class PaymentListItem extends StatelessWidget {
                           ButtonTheme(
                             minWidth: 120.0,
                             child: RaisedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
                               child: Text('Delete'),
                               color: Color(0xFFc8262c),
                               textColor: Colors.white,
