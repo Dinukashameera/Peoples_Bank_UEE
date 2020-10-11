@@ -78,12 +78,12 @@ class MainDrawer extends StatelessWidget {
             Divider(
               thickness: 0.8,
             ),
-            buildListTile(Icons.settings, "Settings", () {
-              Navigator.pushNamed(context, '/settings');
-            }, 'Change your privacy settings of this app', null),
-            Divider(
-              thickness: 0.8,
-            ),
+            // buildListTile(Icons.settings, "Settings", () {
+            //   Navigator.pushNamed(context, '/settings');
+            // }, 'Change your privacy settings of this app', null),
+            // Divider(
+            //   thickness: 0.8,
+            // ),
             buildListTile(
                 CustomIcons.calculator,
                 "Pension Calculator",
@@ -94,11 +94,26 @@ class MainDrawer extends StatelessWidget {
               thickness: 0.8,
             ),
             buildListTile(
+                CustomIcons.money,
+                "Cheque service",
+                () {},
+                'we offer you Speedy, reliable and confidential service while giving maximum security',
+                null),
+            Divider(
+              thickness: 0.8,
+            ),
+            buildListTile(
                 CustomIcons.money_bill_alt,
                 "Pawing service",
                 () {},
                 'we offer you Speedy, reliable and confidential service while giving maximum security',
                 null),
+            Divider(
+              thickness: 0.8,
+            ),
+            buildListTile(Icons.settings, "Settings", () {
+              Navigator.pushNamed(context, '/settings');
+            }, 'Change your privacy settings of this app', null),
             Divider(
               thickness: 0.8,
             ),
