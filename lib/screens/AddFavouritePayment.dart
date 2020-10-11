@@ -257,6 +257,10 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
     'SLT Fibre Internet',
     'SLT Router'
   ];
+
+
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -276,15 +280,25 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
           actions: [AppBarActions()]),
       body: SingleChildScrollView(
         child: Form(
-                  child: Container(
+          key: _formKey,
+          child: Container(
             child: Column(
               children: <Widget>[
                 Container(
                   width: double.infinity,
                   padding: EdgeInsets.all(10),
-                  child: Text(
-                    'ADD BILL PAYMENT',
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'ADD BILL PAYMENT',
+                        style: TextStyle(color: Colors.white, fontSize: 15.0),
+                      ),
+                      Text(
+                        'You can add your favourite bill  payment here.',
+                        style: TextStyle(color: Colors.white54, fontSize: 11.0),
+                      )
+                    ],
                   ),
                   decoration: BoxDecoration(
                     color: Color(0xFF424242),
@@ -347,9 +361,10 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                         // onSubmitted: (_) => _submitData(),
                         // onChanged: (val) => amountInput = val,
                         validator: (value) {
-                            if(value.isEmpty)
-                              {return 'PLease Enter The Account Number';}
-                              return null;
+                          if (value.isEmpty) {
+                            return 'PLease Enter The Account Number';
+                          }
+                          return null;
                         },
                       ),
                       SizedBox(
@@ -409,6 +424,7 @@ class _AddFavouritePaymentState extends State<AddFavouritePayment> {
                   child: RaisedButton(
                     onPressed: () {
                       _submitData(context);
+                      print('des');
                     },
                     child: Text(
                       'ADD',

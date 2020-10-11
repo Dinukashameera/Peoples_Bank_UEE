@@ -5,6 +5,7 @@ import './History_All_screen.dart';
 import './History_Bill_Payment.dart';
 import './History_Fund_Transfer.dart';
 import '../custom_icons_icons.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class HistoryScreen extends StatefulWidget {
   static final routeName = '/history';
@@ -29,7 +30,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       "date": "12-05-2020",
       "ref": "098-323-4342-323",
       "method": "CASA ATM FSCASH (Nov)",
-       "type": "credit",
+      "type": "credit",
       "icon": CustomIcons.minus_squared,
       "trailing": "2020-07-20"
     },
@@ -71,6 +72,34 @@ class _HistoryScreenState extends State<HistoryScreen> {
     }
   ];
 
+  void searchHistory(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+              title: Text('Select Date Range'),
+              content: SfDateRangePicker(
+                selectionMode: DateRangePickerSelectionMode.range,
+                initialSelectedRange: PickerDateRange(
+                    DateTime.now().subtract(const Duration(days: 4)),
+                    DateTime.now().add(const Duration(days: 3))),
+              ),
+              actions: <Widget>[
+                FlatButton(
+                  child: Text('Cancel'),
+                  onPressed: () {
+                    Navigator.of(context).pop(false);
+                  },
+                ),
+                FlatButton(
+                  child: Text('Ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop(true);
+                  },
+                )
+              ],
+            ));
+  }
+
   final tab = TabBar(tabs: <Tab>[
     Tab(
       child: Text('All'),
@@ -85,45 +114,44 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                'assets\\images\\peoples-bank.png',
-                fit: BoxFit.cover,
-                height: 30,
-                width: 100,
-              )
-            ],
-          ),
-          elevation: 0,
-          actions: [AppBarActions()]),
-      body: DefaultTabController(
-          length: 3,
-          child: Scaffold(
-            appBar: PreferredSize(
-              preferredSize: Size.fromHeight(50.0),
-              child: AppBar(
-                bottom: tab,
-              ),
-            ),
-            body: TabBarView(
+        appBar: AppBar(
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                HistoryAll(historyPayment),
-                HistoryFundTransfer(historyPayment),
-                HistoryBillPayment(historyPayment)
+                Image.asset(
+                  'assets\\images\\peoples-bank.png',
+                  fit: BoxFit.cover,
+                  height: 30,
+                  width: 100,
+                )
               ],
             ),
-          )),
-          floatingActionButton: FloatingActionButton(
+            elevation: 0,
+            actions: [AppBarActions()]),
+        body: DefaultTabController(
+            length: 3,
+            child: Scaffold(
+              appBar: PreferredSize(
+                preferredSize: Size.fromHeight(50.0),
+                child: AppBar(
+                  bottom: tab,
+                ),
+              ),
+              body: TabBarView(
+                children: [
+                  HistoryAll(historyPayment),
+                  HistoryFundTransfer(historyPayment),
+                  HistoryBillPayment(historyPayment)
+                ],
+              ),
+            )),
+        floatingActionButton: FloatingActionButton(
           child: Icon(
             Icons.search,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () => searchHistory(context),
           backgroundColor: Color(0xFFC8262C),
-        )
-    );
+        ));
   }
 }
