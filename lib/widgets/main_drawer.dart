@@ -73,39 +73,89 @@ class MainDrawer extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            buildListTile(Icons.person, "My Profile", () {},
-                'Record of your personal information', null),
+            InkWell(
+              onTap: () {},
+              child: ListTile(
+                leading: Icon(
+                  Icons.person,
+                  color: Colors.white,
+                ),
+                title: Text(
+                  "My Profile",
+                  style: TextStyle(color: Colors.white),
+                ),
+                onTap: () {},
+                subtitle: Text(
+                  'Change your privacy settings of this app',
+                  style: TextStyle(color: Colors.white54, fontSize: 13),
+                ),
+              ),
+            ),
             Divider(
               thickness: 0.8,
             ),
-            buildListTile(Icons.settings, "Settings", () {
-              Navigator.pushNamed(context, '/settings');
-            }, 'Change your privacy settings of this app', null),
+            ListTile(
+              leading: Icon(
+                Icons.settings,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Settings',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              onTap: () {
+                Navigator.pushNamed(context, '/settings');
+              },
+              subtitle: Text(
+                'Change your privacy settings of this app',
+                style: TextStyle(color: Colors.white54, fontSize: 13),
+              ),
+            ),
             Divider(
               thickness: 0.8,
             ),
-            buildListTile(
-                CustomIcons.calculator,
-                "Pension Calculator",
-                () {},
+            ListTile(
+              leading: Icon(
+                CustomIcons.newspaper,
+                color: Colors.white,
+              ),
+              title: Text(
+                'Pension Calculator',
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {},
+              subtitle: Text(
                 'Free money advice service pension calculator to estimate your retirement income',
-                null),
+                style: TextStyle(color: Colors.white54, fontSize: 13),
+              ),
+            ),
             Divider(
               thickness: 0.8,
             ),
-            buildListTile(
+            ListTile(
+              leading: Icon(
                 CustomIcons.money_bill_alt,
+                color: Colors.white,
+              ),
+              title: Text(
                 "Pawing service",
-                () {},
-                'we offer you Speedy, reliable and confidential service while giving maximum security',
-                null),
+                style: TextStyle(color: Colors.white),
+              ),
+              onTap: () {},
+              subtitle: Text(
+                'We offer you Speedy, reliable and confidential service while giving maximum security',
+                style: TextStyle(color: Colors.white54, fontSize: 13),
+              ),
+            ),
             Divider(
               thickness: 0.8,
             ),
             Expanded(
               child: Align(
                 alignment: Alignment.bottomLeft,
-                child: buildListTile(Icons.keyboard_backspace, "Log Out", () {
+                child: buildListTile(CustomIcons.login, "Log Out", () {
                   Navigator.pushNamed(context, '/main_login');
                 }, '', null),
               ),
