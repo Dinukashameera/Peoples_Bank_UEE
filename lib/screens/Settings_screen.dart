@@ -64,8 +64,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-            GestureDetector(
-              child: new Card(
+            new Card(
+              child: InkWell(
+                onTap: () {
+                  print('onchange password pressed');
+                  Navigator.pushNamed(context, '/changePassword');
+                },
                 child: Column(mainAxisSize: MainAxisSize.min,
                     //   onTap: () {
                     //   print('Card tapped.');
@@ -83,13 +87,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       )
                     ]),
               ),
-              onTap: () {
-                print('onchange password pressed');
-                Navigator.pushNamed(context, '/changePassword');
-              },
             ),
-            GestureDetector(
-              child: new Card(
+            new Card(
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/deviceManagement');
+                },
                 child: Column(mainAxisSize: MainAxisSize.min,
                     //   onTap: () {
                     //   print('Card tapped.');
@@ -107,16 +110,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       )
                     ]),
               ),
-              onTap: () {
-                Navigator.pushNamed(context, '/deviceManagement');
-              },
             ),
             Container(
                 // height: 200,
                 padding: EdgeInsets.symmetric(vertical: 2.0),
                 alignment: Alignment.center,
-                child: GestureDetector(
-                  child: new Card(
+                child: new Card(
+                  child: InkWell(
+                    onTap: () {
+                      print('card3 pressed');
+                    },
                     child: Column(
                         // mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
@@ -133,9 +136,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           )
                         ]),
                   ),
-                  onTap: () {
-                    print('card3 pressed');
-                  },
                 ))
           ],
         )
