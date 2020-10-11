@@ -73,90 +73,54 @@ class MainDrawer extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            InkWell(
-              onTap: () {},
-              child: ListTile(
-                leading: Icon(
-                  Icons.person,
-                  color: Colors.white,
-                ),
-                title: Text(
-                  "My Profile",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onTap: () {},
-                subtitle: Text(
-                  'Change your privacy settings of this app',
-                  style: TextStyle(color: Colors.white54, fontSize: 13),
-                ),
-              ),
-            ),
+            buildListTile(Icons.person, "My Profile", () {},
+                'Record of your personal information', null),
             Divider(
               thickness: 0.8,
             ),
-            
-            Divider(
-              thickness: 0.8,
-            ),
-            ListTile(
-              leading: Icon(
-                CustomIcons.newspaper,
-                color: Colors.white,
-              ),
-              title: Text(
-                'Pension Calculator',
-                style: TextStyle(color: Colors.white),
-              ),
-              onTap: () {},
-              subtitle: Text(
+            // buildListTile(Icons.settings, "Settings", () {
+            //   Navigator.pushNamed(context, '/settings');
+            // }, 'Change your privacy settings of this app', null),
+            // Divider(
+            //   thickness: 0.8,
+            // ),
+            buildListTile(
+                CustomIcons.calculator,
+                "Pension Calculator",
+                () {},
                 'Free money advice service pension calculator to estimate your retirement income',
-                style: TextStyle(color: Colors.white54, fontSize: 13),
-              ),
-            ),
+                null),
             Divider(
               thickness: 0.8,
             ),
-            ListTile(
-              leading: Icon(
+            buildListTile(
+                CustomIcons.money,
+                "Cheque service",
+                () {},
+                'we offer you Speedy, reliable and confidential service while giving maximum security',
+                null),
+            Divider(
+              thickness: 0.8,
+            ),
+            buildListTile(
                 CustomIcons.money_bill_alt,
-                color: Colors.white,
-              ),
-              title: Text(
                 "Pawing service",
-                style: TextStyle(color: Colors.white),
-              ),
-              onTap: () {},
-              subtitle: Text(
-                'We offer you Speedy, reliable and confidential service while giving maximum security',
-                style: TextStyle(color: Colors.white54, fontSize: 13),
-              ),
+                () {},
+                'we offer you Speedy, reliable and confidential service while giving maximum security',
+                null),
+            Divider(
+              thickness: 0.8,
             ),
-            ListTile(
-              leading: Icon(
-                Icons.settings,
-                color: Colors.white,
-              ),
-              title: Text(
-                'Settings',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onTap: () {
-                Navigator.pushNamed(context, '/settings');
-              },
-              subtitle: Text(
-                'Change your privacy settings of this app',
-                style: TextStyle(color: Colors.white54, fontSize: 13),
-              ),
-            ),
+            buildListTile(Icons.settings, "Settings", () {
+              Navigator.pushNamed(context, '/settings');
+            }, 'Change your privacy settings of this app', null),
             Divider(
               thickness: 0.8,
             ),
             Expanded(
               child: Align(
                 alignment: Alignment.bottomLeft,
-                child: buildListTile(CustomIcons.login, "Log Out", () {
+                child: buildListTile(Icons.keyboard_backspace, "Log Out", () {
                   Navigator.pushNamed(context, '/main_login');
                 }, '', null),
               ),
