@@ -127,7 +127,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     decoration: InputDecoration(
                         labelText: "From Account Number",
                         hintText: '783522398924',
-                        prefixIcon: Icon(Icons.account_balance),
+                        prefixIcon: Icon(CustomIcons.book),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -250,7 +250,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   decoration: InputDecoration(
                       labelText: "Beneficiary Identity Number",
                       hintText: '852132345V',
-                      prefixIcon: Icon(Icons.person),
+                      prefixIcon: Icon(Icons.verified_user),
                       border: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5))),

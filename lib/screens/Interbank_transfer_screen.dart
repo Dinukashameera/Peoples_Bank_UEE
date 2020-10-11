@@ -123,7 +123,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     decoration: InputDecoration(
                         labelText: "From Account Number",
                         hintText: '783522398924',
-                        prefixIcon: Icon(Icons.account_balance),
+                        prefixIcon: Icon(CustomIcons.book),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -244,7 +244,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                     decoration: InputDecoration(
                         labelText: "To Account\'s Bank",
                         hintText: 'Amana Bank',
-                        prefixIcon: Icon(Icons.account_balance),
+                        prefixIcon: Icon(CustomIcons.building_filled),
                         border: OutlineInputBorder(
                             borderRadius:
                                 const BorderRadius.all(Radius.circular(5))),
@@ -367,7 +367,7 @@ class MyCustomFormState extends State<MyCustomForm> {
                   decoration: InputDecoration(
                       labelText: "To Account Number",
                       hintText: '783522398924',
-                      prefixIcon: Icon(Icons.account_balance),
+                      prefixIcon: Icon(CustomIcons.book),
                       border: OutlineInputBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5))),
