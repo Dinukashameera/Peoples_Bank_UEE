@@ -14,7 +14,7 @@ class PinLoginState extends State<PinLogin> {
       body: Container(
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [Colors.black, Colors.black],
+                colors: [Color(0xFF212121), Color(0xFF212121)],
                 begin: Alignment.topRight)),
         child: PinLoginScreen(),
       ),
