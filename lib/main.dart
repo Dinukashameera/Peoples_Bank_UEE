@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyApp> with WidgetsBindingObserver {
         splash: Image.asset('assets\\images\\peoples-bank.png'),
         nextScreen: globals.isLoggedIn ? LoginScreen() : PinLogin(),
         splashTransition: SplashTransition.fadeTransition,
-        backgroundColor: Color(0xFF424242),
+        backgroundColor: Color(0xFF212121),
         duration: 3500,
       ),
       initialRoute: '/',
